@@ -1,6 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "../nav/Home";
+import { ConsultantRecommendationDetails } from "../recommendations/ConsultantRecommendationDetails";
+import { ConsultantRecommendationsList } from "../recommendations/ConsultantRecommendationsList";
 import { UserList } from "../users/UserList";
 
 
@@ -15,8 +17,10 @@ return(
         :
         <Route path="/" element={<Navigate to="/login" />} />
     }
-    
+
     <Route path="/users" element={<UserList />} />
+    <Route path="/consultantRecommendations" element={<ConsultantRecommendationsList />} />
+    <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
         
     </Routes>
     )

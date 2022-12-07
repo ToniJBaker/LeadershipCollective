@@ -2,7 +2,7 @@
 
 namespace LeadershipCollective.Models
 {
-    public class ResoureType
+    public class ResourceType
     {
         public int Id { get; set; }
 
