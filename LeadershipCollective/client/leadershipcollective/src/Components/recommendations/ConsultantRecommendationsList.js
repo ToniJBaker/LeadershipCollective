@@ -19,10 +19,10 @@ export const ConsultantRecommendationsList = () =>{
         </Input>
         <section className="allRecommendations">
         {allConsultantRecommendations.map((rec) => (
-            <Card style={{width: '18rem'}} >
+            <Card key={rec.id} style={{width: '18rem'}} >
                 <CardBody>
-                    <CardTitle tag="h5">
-                        Consultant
+                <CardTitle tag="h5">
+                        {rec.resourceType.name}
                     </CardTitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.name} </CardSubtitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.email} </CardSubtitle>

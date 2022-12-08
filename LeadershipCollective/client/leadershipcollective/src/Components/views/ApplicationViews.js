@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "../nav/Home";
+import { ConsultantRecommendationAdd } from "../recommendations/ConsultantRecommendationAdd";
 import { ConsultantRecommendationDetails } from "../recommendations/ConsultantRecommendationDetails";
 import { ConsultantRecommendationsList } from "../recommendations/ConsultantRecommendationsList";
 import { MyConsultantRecommendations } from "../recommendations/MyConsultantRecommendations";
@@ -25,6 +26,8 @@ return(
     <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
     <Route path="/myConsultantRecommendations" element={<MyConsultantRecommendations />} />
     <Route path="/myConsultantRecommendations/:id/edit" element={<MyConsultantRecommendationEdit />} />
+    <Route path="/addConsultantRecommendation" element={<ConsultantRecommendationAdd />} />
+
 
 
         

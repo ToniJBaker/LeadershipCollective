@@ -3,19 +3,28 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getConsultantRecommendationById, updateConsultantRecommendation } from "../../Managers/ConsultantRecommendationManager";
 import { Form,FormGroup, Label, Input, Button } from "reactstrap";
 import { getAllSubjects } from "../../Managers/SubjectManager";
+import { getAllResourceTypes } from "../../Managers/ResourceTypeManager";
 
 export const MyConsultantRecommendationEdit = ()=> {
 const {id} = useParams();
 const navigate = useNavigate();
-const [subjects, setSubjects] = useState([]); //state for list of subjects
 
+
+const [subjects, setSubjects] = useState([]); //state for list of subjects
 const getSubjects = ()=> {
     getAllSubjects().then(s => setSubjects(s))
 };
-
 useEffect(()=>{
     getSubjects();
 }, []);
+
+const [resourceTypes, setResourceTypes]= useState([]); //state for list of ResourceTypes
+const getResourceTypes = ()=>{
+    getAllResourceTypes().then(r=>setResourceTypes(r))
+};
+useEffect(()=>{
+    getResourceTypes();
+},[]);
 
 //initial state for my single recommendation
 const [myConsultantRecommendation, setMyConsultantRecommendation] = useState({
@@ -42,17 +51,18 @@ const handleSave = (e)=> {  //handle saving new information into edit recommenda
     e.preventDefault();
 
     const editedRecommendation = {
+        id: myConsultantRecommendation.id,
         name: myConsultantRecommendation.name,
         content: myConsultantRecommendation.content,
         email: myConsultantRecommendation.email,
         phoneNumber: myConsultantRecommendation.phoneNumber,
         linkAddress: myConsultantRecommendation.linkAddress,
         serviceArea: myConsultantRecommendation.serviceArea,
-        subjectId: myConsultantRecommendation.subjectId,
-        resourceTypeId:myConsultantRecommendation.resourceTypeId, 
+        subjectId: parseInt(myConsultantRecommendation.subjectId),
+        resourceTypeId: parseInt(myConsultantRecommendation.resourceTypeId), 
     };
-    updateConsultantRecommendation(editedRecommendation);
-    navigate(`/myConsultantRecommendations/${myConsultantRecommendation.id}`)
+    updateConsultantRecommendation(editedRecommendation).then(() => navigate(`/myConsultantRecommendations/`));
+
 }
 const handleCancel = (e)=> { //cancel and go back to list of my recommendations
     e.preventDefault();
@@ -123,16 +133,30 @@ return(<>
                         }} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="category">Subject</Label>
-                        <Input type="select" name="category" defaultValue="none" required value={myConsultantRecommendation.subjectId}
+                        <Label for="subject">Subject</Label>
+                        <Input type="select" name="subject" defaultValue="none" required value={myConsultantRecommendation.subjectId}
                         onChange={(e) => {
                             const recCopy = { ...myConsultantRecommendation };
                             recCopy.subjectId = e.target.value;
                             setMyConsultantRecommendation(recCopy);
                         }}>
-                            <option value="none" disabled hidden>Select a Subject</option>
+                            <option value="none" disabled hidden>Select Subject</option>
                             {subjects.map((sub) => (
                                 <option key={sub.id} value={sub.id}>{sub.name}</option>
+                            ))}
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="resourceType">Resource Type</Label>
+                        <Input type="select" name="resourceType" defaultValue="none" required value={myConsultantRecommendation.resourceTypeId}
+                        onChange={(e) => {
+                            const recCopy = { ...myConsultantRecommendation };
+                            recCopy.resourceTypeId = e.target.value;
+                            setMyConsultantRecommendation(recCopy);
+                        }}>
+                            <option value="none" disabled hidden>Select Resource Type</option>
+                            {resourceTypes.map((r) => (
+                                <option key={r.id} value={r.id}>{r.name}</option>
                             ))}
                         </Input>
                     </FormGroup>

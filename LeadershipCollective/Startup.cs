@@ -32,6 +32,8 @@ namespace LeadershipCollective
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IConsultantRecommendationRepository, ConsultantRecommendationRepository>();
             services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<IResourceTypeRepository, ResourceTypeRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

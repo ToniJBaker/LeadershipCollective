@@ -11,8 +11,20 @@ export const getConsultantRecommendationById = (id) => {
     .then((res)=> res.json())
 };
 
+export const addConsultantRecommendation = (recBody)=> {
+    return fetch(`${apiUrl}/api/ConsultantRecommendation`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(recBody),
+    });
+
+};
+
+
 export const updateConsultantRecommendation = (consultantRecommendation) => {
-    return fetch(`${apiUrl}/ConsultantRecommendation/${consultantRecommendation.id}`, {
+    return fetch(`${apiUrl}/api/ConsultantRecommendation/${consultantRecommendation.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -54,6 +54,14 @@ nav{
     color:#ecf0f1;
     background-color: black;
 }
+.addingMyRecommendations{
+    font-size: 18px;
+    color:#ecf0f1;
+    background-color: black;  
+}
+.addRecommendationLink {
+    color:rgba(243,180,107,0.9)
+}
 
 
    

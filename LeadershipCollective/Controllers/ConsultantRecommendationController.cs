@@ -1,6 +1,7 @@
 ﻿using LeadershipCollective.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using LeadershipCollective.Models;
+using Microsoft.Extensions.Hosting;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,7 @@ namespace LeadershipCollective.Controllers
              return Ok(_consultantRecommendationRepository.GetAll());
         }
 
-        //// GET api/<ConsultantRecommendationController>/5
+        // GET api/<ConsultantRecommendationController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -36,13 +37,15 @@ namespace LeadershipCollective.Controllers
             return Ok(consultantRecommendation);
         }
 
-        //// POST api/<ConsultantRecommendationController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<ConsultantRecommendationController>
+        [HttpPost]
+        public IActionResult Post(ConsultantRecommendation consultantRecommendation)
+        {
+            _consultantRecommendationRepository.Add(consultantRecommendation);
+            return CreatedAtAction("Get", new { id = consultantRecommendation.Id }, consultantRecommendation);
+        }
 
-        //// PUT api/<ConsultantRecommendationController>/5
+        // PUT api/<ConsultantRecommendationController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, ConsultantRecommendation consultantRecommendation)
         {
