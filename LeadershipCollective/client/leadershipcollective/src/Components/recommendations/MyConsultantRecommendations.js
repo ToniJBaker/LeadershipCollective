@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from "react"
-import { Input,Card, CardBody, CardTitle, CardSubtitle, CardLink, CardText } from "reactstrap"
-import { getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
+import React, { useEffect, useState } from "react";
+import {Card, CardTitle, CardSubtitle, CardBody, CardText, CardLink} from "reactstrap";
+import { getConsultantRecommendationById, getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
+import { getCurrentUser } from "../../Managers/UserProfileManager";
 
-export const ConsultantRecommendationsList = () =>{
-    const [allConsultantRecommendations, setAllConsultantRecommendations] = useState([]);
+export const MyConsultantRecommendations = ()=> {
+const localUser = getCurrentUser();
+const [myConsultantRecommendations, setMyConsultantRecommendations] = useState([]);
 
-    const getAllConRecommendations = ()=>{
-        getConsultantRecommendations().then(allRecommendations => setAllConsultantRecommendations(allRecommendations))
-    };
+const getMyConsultantRecommendations = ()=> {
+    getConsultantRecommendations().then(recommendations => setMyConsultantRecommendations(recommendations))
+};
 
-    useEffect(() => {
-        getAllConRecommendations();
-    }, []);
-    
-    return(<>
-        <Input type="select" name="tags" defaultValue="none" >
-                <option value="none" disabled hidden>Search By Subject</option>
-        </Input>
-        <section className="allRecommendations">
-        {allConsultantRecommendations.map((rec) => (
-            <Card style={{width: '18rem'}} >
+useEffect(()=>{
+    getMyConsultantRecommendations();
+}, []);
+
+
+
+return(
+
+<section className="allRecommendations">
+
+       { myConsultantRecommendations.map((rec) => (
+           rec.userProfileId === localUser.id
+            ?<Card style={{width: '18rem'}} >
                 <CardBody>
                     <CardTitle tag="h5">
                         Consultant
@@ -37,8 +41,13 @@ export const ConsultantRecommendationsList = () =>{
                     <CardLink href={`/consultantRecommendation/${rec.id}`}>Recommendation</CardLink>
                     <CardLink href={rec.linkAddress}>{rec.name}</CardLink>
                 </CardBody>
-            </Card>))}
+            </Card>
+            :""
+            ))}
+        
+            
         </section>
-    
-    </>)
+
+)
+
 }

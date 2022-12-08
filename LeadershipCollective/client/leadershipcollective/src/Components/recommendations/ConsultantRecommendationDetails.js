@@ -8,8 +8,8 @@ export const ConsultantRecommendationDetails =()=> {
     const [consultantRecommendation, setConsultantRecommendation] = useState({});
 
     const getConRecommendation = () => {
-        getConsultantRecommendationById(id).then(singleRecommendation => setConsultantRecommendation(singleRecommendation));
-    }
+        getConsultantRecommendationById(id).then(singleRecommendation => setConsultantRecommendation(singleRecommendation))
+    };
     useEffect(()=> {
         getConRecommendation();
     }, []);

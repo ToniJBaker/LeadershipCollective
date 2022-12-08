@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { CardLink } from "reactstrap"
 
 
 
@@ -22,7 +23,7 @@ export const Home = ()=> {
             </div>
         </section>
         <section className="homeMyRecommendations">
-            <div>My Recommendations</div>
+            <Link to="/myConsultantRecommendations"  >My Consultant Recommendations</Link>
             <div>Make a Recommendation</div>
         </section>
     
