@@ -7,5 +7,6 @@ namespace LeadershipCollective.Repositories
     {
         List<ConsultantRecommendation> GetAll();
         ConsultantRecommendation GetById(int id);
+        void Update(ConsultantRecommendation consultantRecommendation);
     }
 }

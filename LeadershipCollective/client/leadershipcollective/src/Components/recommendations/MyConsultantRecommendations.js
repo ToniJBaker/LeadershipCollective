@@ -39,7 +39,9 @@ return(
                 <CardBody>
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
                     <CardLink href={`/consultantRecommendation/${rec.id}`}>Recommendation</CardLink>
-                    <CardLink href={rec.linkAddress}>{rec.name}</CardLink>
+                    <CardLink href={rec.linkAddress}>{rec.name}</CardLink><br/>
+                    <CardLink href={`/myConsultantRecommendations/${rec.id}/edit`}>Edit</CardLink>
+
                 </CardBody>
             </Card>
             :""

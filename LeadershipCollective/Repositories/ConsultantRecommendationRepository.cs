@@ -1,6 +1,7 @@
 ﻿using LeadershipCollective.Models;
 using LeadershipCollective.Utils;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 
 namespace LeadershipCollective.Repositories
@@ -144,6 +145,45 @@ namespace LeadershipCollective.Repositories
                     reader.Close();
 
                     return singleRecommendation;
+                }
+            }
+        }
+
+        public void Update(ConsultantRecommendation consultantRecommendation)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE ConsultantRecommendation
+                                    SET
+                                          Name = @name,
+                                          Content = @content,
+                                          Email = @email,
+                                          PhoneNumber = @phoneNumber,
+                                          LinkAddress = @linkAddress,
+                                          ServiceArea = @serviceArea,
+                                          DateCreated = @dateCreated,
+                                          SubjectId = @subjectId,
+                                          ResourceTypeId = @resourceTypeId
+                                          UserProfileId = @userProfileId
+                                    WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@name", consultantRecommendation.Name);
+                    cmd.Parameters.AddWithValue("@content", DbUtils.ValueOrDBNull(consultantRecommendation.Content));
+                    cmd.Parameters.AddWithValue("@email", DbUtils.ValueOrDBNull(consultantRecommendation.Email));
+                    cmd.Parameters.AddWithValue("@phoneNumber", DbUtils.ValueOrDBNull(consultantRecommendation.PhoneNumber));
+                    cmd.Parameters.AddWithValue("@linkAddress", DbUtils.ValueOrDBNull(consultantRecommendation.LinkAddress));
+                    cmd.Parameters.AddWithValue("@serviceArea", consultantRecommendation.ServiceArea);
+                    cmd.Parameters.AddWithValue("@dateCreated", consultantRecommendation.DateCreated);
+                    cmd.Parameters.AddWithValue("@subjectId", consultantRecommendation.SubjectId);
+                    cmd.Parameters.AddWithValue("@resourceTypeId", consultantRecommendation.ResourceTypeId);
+                    cmd.Parameters.AddWithValue("@userProfileId", consultantRecommendation.UserProfileId);
+                    cmd.Parameters.AddWithValue("@id", consultantRecommendation.Id);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

@@ -4,6 +4,7 @@ import { Home } from "../nav/Home";
 import { ConsultantRecommendationDetails } from "../recommendations/ConsultantRecommendationDetails";
 import { ConsultantRecommendationsList } from "../recommendations/ConsultantRecommendationsList";
 import { MyConsultantRecommendations } from "../recommendations/MyConsultantRecommendations";
+import { MyConsultantRecommendationEdit } from "../recommendations/MyConsultationRecommendationEdit";
 import { UserList } from "../users/UserList";
 
 
@@ -23,6 +24,8 @@ return(
     <Route path="/consultantRecommendations" element={<ConsultantRecommendationsList />} />
     <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
     <Route path="/myConsultantRecommendations" element={<MyConsultantRecommendations />} />
+    <Route path="/myConsultantRecommendations/:id/edit" element={<MyConsultantRecommendationEdit />} />
+
 
         
     </Routes>
