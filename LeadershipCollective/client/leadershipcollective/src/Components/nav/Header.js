@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import { logout, getCurrentUser } from '../../Managers/UserProfileManager';
 import {
@@ -14,18 +14,14 @@ import {
 export const Header = ({isLoggedIn, setIsLoggedIn}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    // const [localUser, setLocalUser] = useState({userTypeId: 2});
+    
     let localUser
     localStorage.getItem("userProfile") ?
      localUser = getCurrentUser()
     :
      localUser = {userTypeId: 0}
 
-    // useEffect(() => {
-    //   // const loggedInUser = getCurrentUser()
-    //   debugger
-    //   setLocalUser(loggedInUser)
-    // }, [isLoggedIn]);
+    
 
 return(
 

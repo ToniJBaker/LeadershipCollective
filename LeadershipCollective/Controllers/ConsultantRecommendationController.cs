@@ -57,10 +57,12 @@ namespace LeadershipCollective.Controllers
             return NoContent();
         }
 
-        //// DELETE api/<ConsultantRecommendationController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<ConsultantRecommendationController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _consultantRecommendationRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

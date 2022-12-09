@@ -32,3 +32,9 @@ export const updateConsultantRecommendation = (consultantRecommendation) => {
       body: JSON.stringify(consultantRecommendation)
     })
   };
+
+  export const deleteConsultationRecommendation = (id)=> {
+    return fetch(`${apiUrl}/api/ConsultantRecommendation/${id}`,{
+        method:"DELETE"
+    })
+  };

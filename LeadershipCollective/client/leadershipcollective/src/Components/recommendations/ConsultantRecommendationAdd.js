@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAllResourceTypes } from "../../Managers/ResourceTypeManager";
 import { getAllSubjects } from "../../Managers/SubjectManager";
 import { Form,FormGroup, Label, Input, Button } from "reactstrap";
 import { addConsultantRecommendation } from "../../Managers/ConsultantRecommendationManager";
+import { getCurrentUser } from "../../Managers/UserProfileManager";
 
 export const ConsultantRecommendationAdd = () => {
 
@@ -16,6 +17,10 @@ const [linkAddress, setLinkAddress] = useState();
 const [serviceArea, setServiceArea] = useState();
 const [subjectId, setSubjectId] = useState();
 const [resourceTypeId, setResourceTypeId ]= useState();
+
+const localUser= getCurrentUser();
+const userProfileId = localUser.id;
+
 
 const [subjects, setSubjects] = useState([]); //state for list of subjects
 const getSubjects = ()=> {
@@ -36,7 +41,7 @@ useEffect(()=>{
 const handleSave = (e) => { //add new Consultant Recommendation to database
     e.preventDefault();
     const newConsultantRecommendationToApi = {
-        name, content, email, phoneNumber, linkAddress, serviceArea, subjectId, resourceTypeId };
+        name, content, email, phoneNumber, linkAddress, serviceArea, subjectId, resourceTypeId, userProfileId  };
         addConsultantRecommendation(newConsultantRecommendationToApi)
         .then(()=>{
             navigate(`/myConsultantRecommendations`)

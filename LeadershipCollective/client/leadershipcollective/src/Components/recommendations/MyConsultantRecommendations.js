@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {Card, CardTitle, CardSubtitle, CardBody, CardText, CardLink} from "reactstrap";
-import { getConsultantRecommendationById, getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
+import {Card, ListGroup, ListGroupItem, Button, CardTitle, CardSubtitle, CardBody, CardText, CardLink} from "reactstrap";
+import { deleteConsultationRecommendation, getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
 import { getCurrentUser } from "../../Managers/UserProfileManager";
 import { Link } from "react-router-dom";
 
 export const MyConsultantRecommendations = ()=> {
 const localUser = getCurrentUser();
 const [myConsultantRecommendations, setMyConsultantRecommendations] = useState([]);
+
 
 const getMyConsultantRecommendations = ()=> {
     getConsultantRecommendations().then(recommendations =>
@@ -18,6 +19,7 @@ const getMyConsultantRecommendations = ()=> {
 useEffect(()=>{
     getMyConsultantRecommendations();
 }, []);
+
 
 
 
@@ -49,11 +51,14 @@ return(<>
                     <img alt="Card cap" src="https://picsum.photos/318/180" width="100%"/>
                 <CardBody>
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
-                    <CardLink href={`/consultantRecommendation/${rec.id}`}>Recommendation</CardLink>
+                    <CardLink href={`/myConsultantRecommendation/${rec.id}`}>Recommendation</CardLink>
                     <CardLink href={rec.linkAddress}>{rec.name}</CardLink><br/>
                     <CardLink href={`/myConsultantRecommendations/${rec.id}/edit`} >Edit</CardLink>
+                    
+
 
                 </CardBody>
+                
             </Card>
             :""
             ))}

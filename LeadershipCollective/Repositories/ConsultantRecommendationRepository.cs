@@ -31,7 +31,7 @@ namespace LeadershipCollective.Repositories
                           LEFT JOIN Subject s ON cr.SubjectId = s.Id
                           LEFT JOIN ResourceType r ON cr.ResourceTypeId = r.Id
                           LEFT JOIN UserProfile u ON cr.UserProfileId = u.Id
-                          ORDER BY cr.DateCreated DESC  
+                          ORDER BY u.id  
                            ";
 
                     var reader = cmd.ExecuteReader();
@@ -196,10 +196,10 @@ namespace LeadershipCollective.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO ConsultantRecommendation (
-                            Name, Content, Email, PhoneNumber, ServiceArea, LinkAddress, CreateDateTime, SubjectId, ResourceTypeId, UserProfileId )
+                            Name, Content, Email, PhoneNumber, ServiceArea, LinkAddress, DateCreated, SubjectId, ResourceTypeId, UserProfileId )
                         OUTPUT INSERTED.ID
                         VALUES (
-                            @Name, @Content, @Email,@PhoneNumber, @ServiceArea, @LinkAddress, @CreateDateTime, @SubjectId,
+                            @Name, @Content, @Email,@PhoneNumber, @ServiceArea, @LinkAddress, @DateCreated, @SubjectId,
                             @ResourceTypeId, @UserProfileId )";
                     cmd.Parameters.AddWithValue("@Name", consultantRecommendation.Name);
                     cmd.Parameters.AddWithValue("@Content", DbUtils.ValueOrDBNull(consultantRecommendation.Content));
@@ -207,7 +207,7 @@ namespace LeadershipCollective.Repositories
                     cmd.Parameters.AddWithValue("@PhoneNumber", DbUtils.ValueOrDBNull(consultantRecommendation.PhoneNumber));
                     cmd.Parameters.AddWithValue("@ServiceArea", consultantRecommendation.ServiceArea);
                     cmd.Parameters.AddWithValue("@LinkAddress", DbUtils.ValueOrDBNull(consultantRecommendation.LinkAddress));
-                    cmd.Parameters.AddWithValue("@CreateDateTime", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
                     cmd.Parameters.AddWithValue("@SubjectId", consultantRecommendation.SubjectId);
                     cmd.Parameters.AddWithValue("@ResourceTypeId", consultantRecommendation.ResourceTypeId);
                     cmd.Parameters.AddWithValue("@UserProfileId", consultantRecommendation.UserProfileId);
@@ -216,7 +216,37 @@ namespace LeadershipCollective.Repositories
                 }
             }
         }
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
 
+                // The first SQL command deletes the comments belonging to the post to be deleted
+                //using (var cmd = conn.CreateCommand())
+                //{
+                //    cmd.CommandText = @"
+                //        DELETE FROM Comment
+                //        WHERE PostId = @id";
+
+                //    cmd.Parameters.AddWithValue("@id", id);
+
+                //    cmd.ExecuteNonQuery();
+                //}
+
+                // The second SQL command deletes the post itself
+                using (var cmd2 = conn.CreateCommand())
+                {
+                    cmd2.CommandText = @"
+                        DELETE FROM ConsultantRecommendation
+                        WHERE Id = @id";
+
+                    cmd2.Parameters.AddWithValue("@id", id);
+
+                    cmd2.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }

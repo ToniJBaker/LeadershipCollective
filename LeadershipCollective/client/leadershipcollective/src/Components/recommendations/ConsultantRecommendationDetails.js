@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
-import { Card, CardBody,CardLink, CardSubtitle, CardTitle, CardText, CardImg } from "reactstrap";
+import { Card, CardBody,CardLink, CardSubtitle, CardText, CardImg } from "reactstrap";
 
 export const ConsultantRecommendationDetails =()=> {
     const {id} = useParams();
@@ -29,7 +29,7 @@ return(<>
     <CardBody>
         <h1>{consultantRecommendation.name}</h1>
       
-      <CardSubtitle className="mb-2 text-muted" tag="h6"> Consultanting for: {consultantRecommendation.subject?.name} </CardSubtitle>
+      <CardSubtitle className="mb-2 text-muted" tag="h6"> Consulting for: {consultantRecommendation.subject?.name} </CardSubtitle>
 
       <CardSubtitle className="mb-2 text-muted" tag="h6"> {consultantRecommendation.email} </CardSubtitle>
       <CardSubtitle className="mb-2 text-muted" tag="h6"> {consultantRecommendation.phoneNumber} </CardSubtitle>

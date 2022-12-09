@@ -5,6 +5,7 @@ import { ConsultantRecommendationAdd } from "../recommendations/ConsultantRecomm
 import { ConsultantRecommendationDetails } from "../recommendations/ConsultantRecommendationDetails";
 import { ConsultantRecommendationsList } from "../recommendations/ConsultantRecommendationsList";
 import { MyConsultantRecommendations } from "../recommendations/MyConsultantRecommendations";
+import { MyConsultantRecommendationDetails } from "../recommendations/MyConsultantRecommendationDetails";
 import { MyConsultantRecommendationEdit } from "../recommendations/MyConsultationRecommendationEdit";
 import { UserList } from "../users/UserList";
 
@@ -26,6 +27,7 @@ return(
     <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
     <Route path="/myConsultantRecommendations" element={<MyConsultantRecommendations />} />
     <Route path="/myConsultantRecommendations/:id/edit" element={<MyConsultantRecommendationEdit />} />
+    <Route path="/myConsultantRecommendation/:id" element={<MyConsultantRecommendationDetails />} />
     <Route path="/addConsultantRecommendation" element={<ConsultantRecommendationAdd />} />
 
 

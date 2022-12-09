@@ -11,5 +11,7 @@ namespace LeadershipCollective.Repositories
         void Add(ConsultantRecommendation consultantRecommendation);
 
         void Update(ConsultantRecommendation consultantRecommendation);
+        void Delete(int id);
+
     }
 }
