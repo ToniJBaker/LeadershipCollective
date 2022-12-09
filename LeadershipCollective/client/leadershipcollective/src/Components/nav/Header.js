@@ -45,7 +45,10 @@ return(
                     </NavItem>
                   
                 : ""
-              }              
+              }    
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/aboutApplication">About</NavLink>
+              </NavItem>          
             </div>
             }
         </Nav>

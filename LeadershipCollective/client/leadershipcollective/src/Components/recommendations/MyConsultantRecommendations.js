@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {Card, ListGroup, ListGroupItem, Button, CardTitle, CardSubtitle, CardBody, CardText, CardLink} from "reactstrap";
-import { deleteConsultationRecommendation, getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
+import {Card,  CardTitle, CardSubtitle, CardBody, CardText, CardLink} from "reactstrap";
+import {  getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
 import { getCurrentUser } from "../../Managers/UserProfileManager";
 import { Link } from "react-router-dom";
 

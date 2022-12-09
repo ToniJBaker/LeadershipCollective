@@ -8,6 +8,8 @@ namespace LeadershipCollective.Repositories
     {
         List<ConsultantRecommendation> GetAll();
         ConsultantRecommendation GetById(int id);
+        List<ConsultantRecommendation> SearchBySubjectId(int id);
+
         void Add(ConsultantRecommendation consultantRecommendation);
 
         void Update(ConsultantRecommendation consultantRecommendation);

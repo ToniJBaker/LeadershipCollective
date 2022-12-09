@@ -23,12 +23,17 @@ namespace LeadershipCollective.Controllers
             return Ok(_subjectRepository.GetAll());
         }
 
-        //// GET api/<SubjectController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET api/<SubjectController>/5
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var subject = _subjectRepository.GetSubjectById(id);
+            if (subject == null)
+            {
+                return NotFound();
+            }
+            return Ok(subject);
+        }
 
         //// POST api/<SubjectController>
         //[HttpPost]

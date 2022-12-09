@@ -23,8 +23,9 @@ export const Home = ()=> {
             </div>
         </section>
         <section className="homeMyRecommendations">
-            <Link to="/myConsultantRecommendations"  >My Consultant Recommendations</Link>
-            <div>Make a Recommendation</div>
+            <Link className="homeLink" to="/myConsultantRecommendations"  >My Consultant Recommendations</Link>
+            <Link className="homeLink" to="/myMediaRecommendations"  >My Media Recommendations</Link>
+
         </section>
     
     </div>

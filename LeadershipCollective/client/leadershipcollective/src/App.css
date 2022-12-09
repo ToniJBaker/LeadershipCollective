@@ -39,6 +39,9 @@ nav{
     margin-left: 5em;
     margin-right: 5em;
 }
+.homeLink {
+    color:black
+}
 .allRecommendations{
     display: flex;
     flex-wrap:wrap;

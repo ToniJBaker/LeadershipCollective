@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { Input,Card, CardBody, CardTitle, CardSubtitle, CardLink, CardText } from "reactstrap"
-import { getConsultantRecommendations } from "../../Managers/ConsultantRecommendationManager";
+import { getConsultantRecommendations, searchConsultantRecommendationsBySubjectId } from "../../Managers/ConsultantRecommendationManager";
+import { getAllSubjects } from "../../Managers/SubjectManager";
 
 export const ConsultantRecommendationsList = () =>{
     const [allConsultantRecommendations, setAllConsultantRecommendations] = useState([]);
+    
+    
+    const [subjects, setSubjects] = useState([]); //state for list of subjects
+    const getSubjects = ()=> {
+        getAllSubjects().then(s => setSubjects(s))
+    };
+    useEffect(()=>{
+        getSubjects();
+    }, []);
 
     const getAllConRecommendations = ()=>{
         getConsultantRecommendations().then(allRecommendations => setAllConsultantRecommendations(allRecommendations))
@@ -13,9 +23,25 @@ export const ConsultantRecommendationsList = () =>{
         getAllConRecommendations();
     }, []);
     
+    const handleSelect = (e)=> {
+        e.preventDefault(); 
+        if(e.target.value === "true"){
+            getAllConRecommendations();
+        }
+        else{
+            searchConsultantRecommendationsBySubjectId(e.target.value) //use .then when you have a fetch call
+            .then ((rec)=>setAllConsultantRecommendations(rec))
+        }
+        
+    };
+    
     return(<>
-        <Input type="select" name="tags" defaultValue="none" >
+        <Input type="select" name="tags" defaultValue="none" onChange={handleSelect}  >
                 <option value="none" disabled hidden>Search By Subject</option>
+                            <option value="true"   > Get All </option>
+                            {subjects.map((s) => (
+                                <option key={s.id} value={s.id}>{s.name}</option>
+                            ))}
         </Input>
         <section className="allRecommendations">
         {allConsultantRecommendations.map((rec) => (

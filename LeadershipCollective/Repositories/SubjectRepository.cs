@@ -1,5 +1,6 @@
 ﻿using Azure;
 using LeadershipCollective.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
@@ -30,6 +31,35 @@ namespace LeadershipCollective.Repositories
                     }
                     reader.Close();
                     return subjects;
+                }
+            }
+        }
+        public Subject GetSubjectById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT Id, Name FROM Subject WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Subject subject = new Subject
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Name = reader.GetString(reader.GetOrdinal("Name"))
+                        };
+                        reader.Close();
+                        return subject;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
                 }
             }
         }

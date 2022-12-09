@@ -38,3 +38,8 @@ export const updateConsultantRecommendation = (consultantRecommendation) => {
         method:"DELETE"
     })
   };
+
+  export const searchConsultantRecommendationsBySubjectId = (id) => {
+    return fetch(`${apiUrl}/api/ConsultantRecommendation/search/${id}`)//http GET single consultantRecommendation
+    .then((res)=> res.json())
+  };

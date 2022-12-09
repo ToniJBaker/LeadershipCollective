@@ -8,6 +8,8 @@ import { MyConsultantRecommendations } from "../recommendations/MyConsultantReco
 import { MyConsultantRecommendationDetails } from "../recommendations/MyConsultantRecommendationDetails";
 import { MyConsultantRecommendationEdit } from "../recommendations/MyConsultationRecommendationEdit";
 import { UserList } from "../users/UserList";
+import { MyMediaRecommendations } from "../recommendations/MyMediaRecommendations";
+import { About } from "../nav/About";
 
 
 
@@ -23,12 +25,17 @@ return(
     }
 
     <Route path="/users" element={<UserList />} />
+    <Route path="/aboutApplication" element={<About />} />
+
     <Route path="/consultantRecommendations" element={<ConsultantRecommendationsList />} />
     <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
     <Route path="/myConsultantRecommendations" element={<MyConsultantRecommendations />} />
     <Route path="/myConsultantRecommendations/:id/edit" element={<MyConsultantRecommendationEdit />} />
     <Route path="/myConsultantRecommendation/:id" element={<MyConsultantRecommendationDetails />} />
     <Route path="/addConsultantRecommendation" element={<ConsultantRecommendationAdd />} />
+
+    <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
+
 
 
 
