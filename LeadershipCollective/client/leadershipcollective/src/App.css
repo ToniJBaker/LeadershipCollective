@@ -53,9 +53,10 @@ nav{
 
 .messagesOnConsultantRecommendations{
     
-    font-size: 18px;
+    font-size: 16px;
     color:#ecf0f1;
     background-color: black;
+
 }
 .addingMyRecommendations{
     font-size: 18px;
@@ -65,6 +66,18 @@ nav{
 .addRecommendationLink {
     color:rgba(243,180,107,0.9)
 }
+.headerMessages{
+    margin-left:2em;
+    margin-right:2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.contentMessages{
+    margin-left:2em;
+    margin-right:2em;  
+}
+
 
 
    

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { deleteConsultationRecommendation, getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
 import { ListGroup, ListGroupItem, Button, Card, CardBody,CardLink, CardSubtitle, CardText, CardImg } from "reactstrap";
+import { getCurrentUser } from "../../Managers/UserProfileManager";
 
 export const MyConsultantRecommendationDetails =()=> {
-    const {id} = useParams();
+    const {id} = useParams(); //id to get details of single consultantRecommendation
     const navigate = useNavigate();
     const [consultantRecommendation, setConsultantRecommendation] = useState({});
     const [confirmDelete, setConfirmDelete] = useState(false);
+    
+    
+    
 
     const getConRecommendation = () => {
         getConsultantRecommendationById(id).then(singleRecommendation => setConsultantRecommendation(singleRecommendation))
@@ -16,12 +20,12 @@ export const MyConsultantRecommendationDetails =()=> {
         getConRecommendation();
     }, []);
 
-    const toggleDeleteConfirm = (e) => {
+    const toggleDeleteConfirm = (e) => {  //toggle delete element
       e.preventDefault();
       setConfirmDelete(!confirmDelete);
   };
   
-  const handleDelete= () => {
+  const handleDelete= () => { //delete button confirmation
     deleteConsultationRecommendation(consultantRecommendation.id)
     
     .then(navigate("/myConsultantRecommendations"))
@@ -77,9 +81,7 @@ return(<>
     </CardBody>
     
   </Card>
-  <Card >
-    <div className="messagesOnConsultantRecommendations">Messages</div>
-  </Card>
+  
   
     
 </>)

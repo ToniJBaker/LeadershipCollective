@@ -6,5 +6,7 @@ namespace LeadershipCollective.Repositories
     public interface IConsultantMessageRepository
     {
         List<ConsultantRecMessage> GetAll();
+        ConsultantRecMessage GetById(int id);
+        void Add(ConsultantRecMessage consultantRecMessage);
     }
 }

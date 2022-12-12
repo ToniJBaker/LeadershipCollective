@@ -1,6 +1,7 @@
 ﻿using LeadershipCollective.Models;
 using LeadershipCollective.Utils;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 
 namespace LeadershipCollective.Repositories
@@ -64,6 +65,92 @@ namespace LeadershipCollective.Repositories
                     reader.Close();
 
                     return messages;
+                }
+            }
+        }
+
+        public ConsultantRecMessage GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                          SELECT
+                            cm.Id AS ConsultantRecMessageId, cm.Content , cm.UserProfileId AS UserProfileId , cm.ConsultantRecommendationId AS ConsultantRecommendationId, cm.DateCreated AS ConsultantMessageCreated ,       
+                            u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId, u.DisplayName,
+                            ut.Id AS UserTypeId, ut.Name AS UserTypeName,
+
+                            cr.Id AS ConsultantRecommendationId
+                          
+                          FROM ConsultantRecMessage cm
+                          LEFT JOIN UserProfile u ON cm.UserProfileId = u.Id
+                          LEFT JOIN UserType ut ON u.UserTypeId = ut.Id                          
+                          LEFT JOIN ConsultantRecommendation cr ON cm.ConsultantRecommendationId = cr.Id
+                          WHERE cm.Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    ConsultantRecMessage singleMessage = null;
+
+                    while (reader.Read())
+                    {
+                        if (singleMessage == null)
+                        {
+                            singleMessage =new ConsultantRecMessage()
+                            {
+                                Id = id,
+                                Content = DbUtils.GetString(reader, "Content"),
+                                DateCreated = DbUtils.GetDateTime(reader, "ConsultantMessageCreated"),
+                                ConsultantRecommendationId = reader.GetInt32(reader.GetOrdinal("ConsultantRecommendationId")),
+                                UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                UserProfile = new UserProfile()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                    FirstName = DbUtils.GetString(reader, "FirstName"),
+                                    LastName = DbUtils.GetString(reader, "LastName"),
+                                    DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                                    Email = DbUtils.GetString(reader, "UserEmail"),
+                                    UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                    UserType = new UserType()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                        Name = DbUtils.GetString(reader, "UserTypeName"),
+                                    }
+                                }
+                            };
+                        }
+                        
+                    }
+
+                    reader.Close();
+
+                    return singleMessage;
+                }
+            }
+        }
+
+        public void Add(ConsultantRecMessage consultantRecMessage)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO ConsultantRecMessage (
+                            Content, DateCreated, ConsultantRecommendationId, UserProfileId )
+                        OUTPUT INSERTED.ID
+                        VALUES (
+                            @Content, @DateCreated, @ConsultantRecommendationId, @UserProfileId )";
+                    cmd.Parameters.AddWithValue("@Content", DbUtils.ValueOrDBNull(consultantRecMessage.Content));
+                    cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@ConsultantRecommendationId", consultantRecMessage.ConsultantRecommendationId);
+                    cmd.Parameters.AddWithValue("@UserProfileId", consultantRecMessage.UserProfileId);
+
+                    consultantRecMessage.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }

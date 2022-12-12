@@ -120,7 +120,7 @@ namespace LeadershipCollective.Repositories
                           LEFT JOIN ConsultantRecMessage cm ON cr.Id = cm.ConsultantRecommendationId
                           LEFT JOIN UserProfile up ON cm.UserProfileId = up.Id 
                           WHERE cr.Id = @Id
-                          ORDER BY cm.DateCreated  ";
+                          ORDER BY cm.DateCreated DESC ";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
                     var reader = cmd.ExecuteReader();
