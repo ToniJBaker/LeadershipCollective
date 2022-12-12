@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
-import { Card, CardBody,CardLink, CardSubtitle, CardText, CardImg } from "reactstrap";
+import { Card, CardBody,CardLink, CardSubtitle, CardText, CardImg, FormGroup, Label, Input } from "reactstrap";
 
 export const ConsultantRecommendationDetails =()=> {
     const {id} = useParams();
@@ -46,7 +46,23 @@ return(<>
     
   </Card>
   <Card >
-    <div className="messagesOnConsultantRecommendations">Leave a Message</div>
+    <div className="messagesOnConsultantRecommendations">
+    <h3>Join The Conversation</h3>
+    <FormGroup>
+      <Label for="messageContent"></Label>
+      <Input type="text" placeholder="type comment here" name="messageContent"></Input>
+    </FormGroup>
+    {
+    consultantRecommendation?.messages?.length
+      ?consultantRecommendation.messages.map((m)=>(<>
+      {m.userProfile.displayName} : {m.content}<hr/>
+
+      </>))
+      :""
+    
+    }
+    </div>
+    
   </Card>
     
 </>)

@@ -46,11 +46,11 @@ namespace LeadershipCollective.Models
 
         public UserProfile UserProfile { get; set; }
 
-        //public List<ConsultantRecMessage> {get; set;}
- 
+        public List<ConsultantRecMessage> Messages { get; set;}
 
 
-        
-        
+
+
+
     }
 }

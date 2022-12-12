@@ -28,12 +28,14 @@ namespace LeadershipCollective.Repositories
 
                             u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId, u.DisplayName,
                             ut.Id AS UserTypeId, ut.Name AS UserTypeName
+                            
                           FROM ConsultantRecommendation cr
                           LEFT JOIN Subject s ON cr.SubjectId = s.Id
                           LEFT JOIN ResourceType r ON cr.ResourceTypeId = r.Id
                           LEFT JOIN UserProfile u ON cr.UserProfileId = u.Id
                           LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
-                          ORDER BY u.id  
+                          
+                          ORDER BY cr.DateCreated  
                            ";
 
                     var reader = cmd.ExecuteReader();
@@ -106,13 +108,19 @@ namespace LeadershipCollective.Repositories
 
                             u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId,  u.DisplayName,
                             
-                            ut.Id AS UserTypeId, ut.Name AS UserTypeName
+                            ut.Id AS UserTypeId, ut.Name AS UserTypeName,
+                            cm.Id AS ConsultantRecMessageId, cm.Content AS MessageContent , cm.UserProfileId AS MessageUserProfileId , cm.ConsultantRecommendationId AS ConsultantRecommendationId, cm.DateCreated AS ConsultantMessageCreated,
+                            up.Id AS MessageUserProfileId, up.FirstName AS MessageFirstName, up.LastName AS MessageLastName, up.DisplayName AS MessageDisplayName
+
                           FROM ConsultantRecommendation cr
                           LEFT JOIN Subject s ON cr.SubjectId = s.Id
                           LEFT JOIN ResourceType r ON cr.ResourceTypeId = r.Id
                           LEFT JOIN UserProfile u ON cr.UserProfileId = u.Id
                           LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
-                          WHERE cr.Id = @Id";
+                          LEFT JOIN ConsultantRecMessage cm ON cr.Id = cm.ConsultantRecommendationId
+                          LEFT JOIN UserProfile up ON cm.UserProfileId = up.Id 
+                          WHERE cr.Id = @Id
+                          ORDER BY cm.DateCreated  ";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
                     var reader = cmd.ExecuteReader();
@@ -121,44 +129,67 @@ namespace LeadershipCollective.Repositories
 
                     while (reader.Read())
                     {
-                        singleRecommendation =new ConsultantRecommendation()
+                        if (singleRecommendation == null)
                         {
-                            Id = id,
-                            Name = DbUtils.GetString(reader, "ConsultantName"),
-                            Content = DbUtils.GetString(reader, "Content"),
-                            Email = DbUtils.GetString(reader, "ConsultantEmail"),
-                            PhoneNumber = DbUtils.GetString(reader, "PhoneNumber"),
-                            LinkAddress = DbUtils.GetString(reader, "LinkAddress"),
-                            ServiceArea = DbUtils.GetString(reader, "ServiceArea"),
-                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
-                            SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
-                            ResourceTypeId = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
-                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
-                            Subject = new Subject()
+                            singleRecommendation =new ConsultantRecommendation()
                             {
-                                Id = reader.GetInt32(reader.GetOrdinal("SubjectId")),
-                                Name = DbUtils.GetString(reader, "SubjectName"),
-                            },
-                            ResourceType = new ResourceType()
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
-                                Name = DbUtils.GetString(reader, "ResourceTypeName"),
-                            },
-                            UserProfile = new UserProfile()
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
-                                FirstName = DbUtils.GetString(reader, "FirstName"),
-                                LastName = DbUtils.GetString(reader, "LastName"),
-                                DisplayName = DbUtils.GetString(reader, "DisplayName"),
-                                Email = DbUtils.GetString(reader, "UserEmail"),
-                                UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
-                                UserType = new UserType()
+                                Id = id,
+                                Name = DbUtils.GetString(reader, "ConsultantName"),
+                                Content = DbUtils.GetString(reader, "Content"),
+                                Email = DbUtils.GetString(reader, "ConsultantEmail"),
+                                PhoneNumber = DbUtils.GetString(reader, "PhoneNumber"),
+                                LinkAddress = DbUtils.GetString(reader, "LinkAddress"),
+                                ServiceArea = DbUtils.GetString(reader, "ServiceArea"),
+                                DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                                SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
+                                ResourceTypeId = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
+                                UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                Subject = new Subject()
                                 {
-                                    Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
-                                    Name = DbUtils.GetString(reader, "UserTypeName"),
+                                    Id = reader.GetInt32(reader.GetOrdinal("SubjectId")),
+                                    Name = DbUtils.GetString(reader, "SubjectName"),
                                 },
-                            }
-                        };
+                                ResourceType = new ResourceType()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
+                                    Name = DbUtils.GetString(reader, "ResourceTypeName"),
+                                },
+                                UserProfile = new UserProfile()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                    FirstName = DbUtils.GetString(reader, "FirstName"),
+                                    LastName = DbUtils.GetString(reader, "LastName"),
+                                    DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                                    Email = DbUtils.GetString(reader, "UserEmail"),
+                                    UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                    UserType = new UserType()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                        Name = DbUtils.GetString(reader, "UserTypeName"),
+                                    }
+                                },
+                                Messages = new List<ConsultantRecMessage>(),
+
+                            };
+                        }
+                        if (DbUtils.IsNotDbNull(reader, "ConsultantRecMessageId"))
+                        {
+                            singleRecommendation.Messages.Add(new ConsultantRecMessage()
+                            {
+                                Id = DbUtils.GetInt(reader, "ConsultantRecMessageId"),
+                                Content = DbUtils.GetString(reader, "MessageContent"),
+                                ConsultantRecommendationId = id,
+                                DateCreated = reader.GetDateTime(reader.GetOrdinal("ConsultantMessageCreated")),
+                                UserProfileId = DbUtils.GetInt(reader, "MessageUserProfileId"),
+                                UserProfile = new UserProfile()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MessageUserProfileId"),
+                                    FirstName = DbUtils.GetString(reader, "MessageFirstName"),
+                                    LastName = DbUtils.GetString(reader, "MessageLastName"),
+                                    DisplayName = DbUtils.GetString(reader, "MessageDisplayName")
+                                }
+                            });
+                        }
                     }
 
                     reader.Close();
