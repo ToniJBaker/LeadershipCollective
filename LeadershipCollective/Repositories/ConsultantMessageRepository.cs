@@ -154,5 +154,24 @@ namespace LeadershipCollective.Repositories
                 }
             }
         }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd2 = conn.CreateCommand())
+                {
+                    cmd2.CommandText = @"
+                        DELETE FROM ConsultantRecMessage
+                        WHERE Id = @id";
+
+                    cmd2.Parameters.AddWithValue("@id", id);
+
+                    cmd2.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

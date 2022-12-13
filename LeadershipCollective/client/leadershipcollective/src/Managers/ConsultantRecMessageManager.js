@@ -11,3 +11,14 @@ export const addConsultantRecMessage = (recBody)=> {
     });
 
 };
+
+export const getConsultantRecMessageById = (id)=> {
+    return fetch(`${apiUrl}/api/consultantMessage/${id}`)//http GET single consultant Recommendation Message
+    .then((res)=> res.json())
+};
+
+export const deleteConsultantRecMessage = (id) => {
+    return fetch(`${apiUrl}/api/ConsultantMessage/${id}`,{
+        method:"DELETE"
+    })
+};

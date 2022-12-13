@@ -1,37 +1,46 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
-import { Card, CardBody,CardLink, CardSubtitle, CardText, CardImg, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React, { useEffect, useRef, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { deleteConsultationRecommendation, getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
+import { ListGroup,ListGroupItem, Card, CardBody,CardLink, CardSubtitle, CardText, CardImg, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { getCurrentUser } from "../../Managers/UserProfileManager";
 import { addConsultantRecMessage } from "../../Managers/ConsultantRecMessageManager";
+import { ConsultantMessageDetails } from "./ConsultantMessageDetails";
 
 export const ConsultantRecommendationDetails =()=> {
     const {id} = useParams();
     const [consultantRecommendation, setConsultantRecommendation] = useState({});
+    const [wasMessagePosted, setWasMessagePosted]= useState(false);
     
-
+    
     //items for adding a new message
     const localUser = getCurrentUser();
-    const [content, setContent] = useState();
+    const messageRef= useRef();
 
     const getConRecommendation = () => {
         getConsultantRecommendationById(id).then(singleRecommendation => setConsultantRecommendation(singleRecommendation))
     };
     useEffect(()=> {
-        getConRecommendation();
-    }, []);
+        getConRecommendation()
+        messageRef.current.value=""
+    }, [wasMessagePosted]);
 
-    const handleSaveNewMessage = (e)=> {
+    const handleSave = (e)=> {
       e.preventDefault()
+      console.log(messageRef.current.value)
       const newConsultantMessageToApi={
-        content: content,
+        content: messageRef.current.value,
         userProfileId: localUser.id,
-        consultantRecommendationId: consultantRecommendation.id
+        consultantRecommendationId:id
       }
-      addConsultantRecMessage(newConsultantMessageToApi).then((rec)=>{
-        setConsultantRecommendation(rec);
-      })
+      addConsultantRecMessage(newConsultantMessageToApi)
+      .then((m)=>{
+        setConsultantRecommendation(m)
+      });
+      setWasMessagePosted(!wasMessagePosted)
+
     }
+
+    
     
 
 return(<>
@@ -67,40 +76,24 @@ return(<>
   </Card>
   <Card >
     <div className="messagesOnConsultantRecommendations">
-    <section className="headerMessages">
-      <h3>Join The Conversation</h3> 
-      <div className="text-muted">messages {consultantRecommendation.messages?.length}</div>
-    </section>
-    <Form onSubmit={handleSaveNewMessage}>
-      <FormGroup>
-        <Label for="content"></Label>
-        <Input  onChange={(e) => setContent(e.target.value)} type="text" placeholder="type message here" name="content"></Input>
-        <Button className="button m-2" color="primary" size="sm" >Save</Button>
-      </FormGroup>
-    </Form>
-    <section className="contentMessages" >
-      {
-      consultantRecommendation?.messages?.length
-        ?consultantRecommendation.messages.map((m)=>(<>
-        <div>{m.userProfile.displayName} : {m.content}</div>
-        <div className="text-muted">{m.dateCreated}</div> 
-        {localUser.id === m.userProfileId
-          ?<CardLink href="/ConsultantRecMessageEdit" className="text-muted" >Edit</CardLink>
-            
-          
-          :""
-          
-        }
-       <hr/>
-
-        </>))
-        :""
-      }
-    </section>
+      <section className="headerMessages">
+        <h3>Join The Conversation</h3> 
+        <div className="text-muted">messages {consultantRecommendation.messages?.length}</div>
+      </section>
+      <Form onSubmit={handleSave}>
+        <FormGroup>
+          <Label for="content"></Label>
+          <Input innerRef={messageRef} type="text" placeholder="type message here" name="content"></Input>
+          <Button  className="button m-2" color="primary" size="sm" >Save</Button>
+        </FormGroup>
+      </Form>
+      
+      <section className="contentMessages" >
+        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message}/>))}        
+      </section>
+    
     </div>
-    
   </Card>
-    
 </>)
 
 }

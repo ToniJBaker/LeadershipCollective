@@ -53,10 +53,12 @@ namespace LeadershipCollective.Controllers
         //{
         //}
 
-        //// DELETE api/<ConsultantMessageController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<ConsultantMessageController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _consultantMessageRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
