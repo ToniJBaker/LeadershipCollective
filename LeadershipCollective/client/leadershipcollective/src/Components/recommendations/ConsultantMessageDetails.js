@@ -16,7 +16,7 @@ export const ConsultantMessageDetails = ({message})=> {
 
     const handleDelete= () => { //delete button confirmation
         deleteConsultantRecMessage(message.id)
-        .then(navigate("/myConsultantRecommendations"))
+        .then(()=>{navigate(`/consultantRecommendation/${message.consultantRecommendationId}`)}) //struggling with what do here
     };
     
     return (<>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { deleteConsultationRecommendation, getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
-import { ListGroup,ListGroupItem, Card, CardBody,CardLink, CardSubtitle, CardText, CardImg, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import {  useParams } from "react-router-dom"
+import {  getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
+import { Card, CardBody,CardLink, CardSubtitle, CardText, CardImg, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { getCurrentUser } from "../../Managers/UserProfileManager";
 import { addConsultantRecMessage } from "../../Managers/ConsultantRecMessageManager";
 import { ConsultantMessageDetails } from "./ConsultantMessageDetails";
@@ -89,7 +89,7 @@ return(<>
       </Form>
       
       <section className="contentMessages" >
-        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message}/>))}        
+        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message} setConsultantRecommendation={setConsultantRecommendation} consultantRecommendation={consultantRecommendation} />))}        
       </section>
     
     </div>
