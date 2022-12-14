@@ -173,5 +173,27 @@ namespace LeadershipCollective.Repositories
                 }
             }
         }
+
+        public void Update(ConsultantRecMessage consultantRecMessage)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE ConsultantRecMessage
+                                    SET
+                                        Content = @content,
+                                    WHERE Id = @id";
+
+                    
+                    cmd.Parameters.AddWithValue("@content", DbUtils.ValueOrDBNull(consultantRecMessage.Content));
+                    cmd.Parameters.AddWithValue("@id", consultantRecMessage.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

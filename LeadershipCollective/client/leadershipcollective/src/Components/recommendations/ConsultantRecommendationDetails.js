@@ -35,13 +35,10 @@ export const ConsultantRecommendationDetails =()=> {
       addConsultantRecMessage(newConsultantMessageToApi)
       .then((m)=>{
         setConsultantRecommendation(m)
-      });
-      setWasMessagePosted(!wasMessagePosted)
+      })
+      .then(()=>{setWasMessagePosted(!wasMessagePosted)});
 
     }
-
-    
-    
 
 return(<>
 
@@ -80,6 +77,7 @@ return(<>
         <h3>Join The Conversation</h3> 
         <div className="text-muted">messages {consultantRecommendation.messages?.length}</div>
       </section>
+      
       <Form onSubmit={handleSave}>
         <FormGroup>
           <Label for="content"></Label>
@@ -89,7 +87,7 @@ return(<>
       </Form>
       
       <section className="contentMessages" >
-        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message} setConsultantRecommendation={setConsultantRecommendation} consultantRecommendation={consultantRecommendation} />))}        
+        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message} />))}        
       </section>
     
     </div>

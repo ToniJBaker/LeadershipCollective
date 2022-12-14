@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { deleteConsultationRecommendation, getConsultantRecommendationById } from "../../Managers/ConsultantRecommendationManager";
 import { ListGroup, ListGroupItem, Button, Card, CardBody,CardLink, CardSubtitle, CardText, CardImg } from "reactstrap";
-import { getCurrentUser } from "../../Managers/UserProfileManager";
+
 
 export const MyConsultantRecommendationDetails =()=> {
     const {id} = useParams(); //id to get details of single consultantRecommendation
