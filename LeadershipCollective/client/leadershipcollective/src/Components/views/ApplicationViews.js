@@ -10,7 +10,6 @@ import { MyConsultantRecommendationEdit } from "../recommendations/MyConsultatio
 import { UserList } from "../users/UserList";
 import { MyMediaRecommendations } from "../recommendations/MyMediaRecommendations";
 import { About } from "../nav/About";
-import { ConsultantRecMessageEdit } from "../recommendations/ConsultantRecMessageEdit";
 
 
 
@@ -34,7 +33,7 @@ return(
     <Route path="/myConsultantRecommendations/:id/edit" element={<MyConsultantRecommendationEdit />} />
     <Route path="/myConsultantRecommendation/:id" element={<MyConsultantRecommendationDetails />} />
     <Route path="/addConsultantRecommendation" element={<ConsultantRecommendationAdd />} />
-    <Route path="/ConsultantRecMessage/:id/Edit" element={<ConsultantRecMessageEdit />} />
+    
 
 
     <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />

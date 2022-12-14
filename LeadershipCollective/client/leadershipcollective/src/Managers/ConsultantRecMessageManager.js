@@ -22,3 +22,13 @@ export const deleteConsultantRecMessage = (id) => {
         method:"DELETE"
     })
 };
+export const updateConsultantRecMessage = (consultantRecMessage)=>{
+    return fetch(`${apiUrl}/api/ConsultantMessage/${consultantRecMessage.id}`,{
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(consultantRecMessage)
+    })
+};
+

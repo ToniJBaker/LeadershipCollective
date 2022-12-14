@@ -47,11 +47,17 @@ namespace LeadershipCollective.Controllers
             return CreatedAtAction("Get", new { id = consultantRecMessage.Id }, consultantRecMessage);
         }
 
-        //// PUT api/<ConsultantMessageController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/<ConsultantMessageController>/5
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, ConsultantRecMessage consultantRecMessage)
+        {
+            if (id !=consultantRecMessage.Id)
+            {
+                return BadRequest();
+            }
+            _consultantMessageRepository.Update(consultantRecMessage);
+            return NoContent();
+        }
 
         // DELETE api/<ConsultantMessageController>/5
         [HttpDelete("{id}")]

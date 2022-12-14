@@ -11,7 +11,8 @@ export const ConsultantMessageDelete = ({message}) => {
         setConfirmDelete(!confirmDelete);
     };
 
-    const handleDelete= () => { //delete button confirmation
+    const handleDelete= (e) => { //delete button confirmation
+        e.preventDefault();
         deleteConsultantRecMessage(message.id)
         //struggling with what do here
     }
