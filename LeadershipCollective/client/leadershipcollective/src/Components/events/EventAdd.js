@@ -44,7 +44,7 @@ export const EventAdd = ()=> {
             </FormGroup>
             <FormGroup>
                 <Label for="date">Date</Label>
-                <Input type="text" id="date" required placeholder="Event Date"
+                <Input type="date" id="date" required placeholder=""
                 onChange={(e) => setDate(e.target.value)} />
             </FormGroup>
             <FormGroup>

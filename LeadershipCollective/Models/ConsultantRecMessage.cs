@@ -18,6 +18,6 @@ namespace LeadershipCollective.Models
 
         public DateTime DateCreated { get; set; }
 
-
+        public string DateCreatedString => DateCreated.ToString("dddd, dd MMMM yyyy");
     }
 }

@@ -54,6 +54,7 @@ return(<>
                     <img alt="Card cap" src="https://picsum.photos/318/180" width="100%"/>
                 <CardBody>
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
+                    <CardText> On: {rec.dateCreatedString}</CardText>
                     <CardLink href={`/myConsultantRecommendation/${rec.id}`}>View Details</CardLink>
                     <CardLink href={rec.linkAddress}>{rec.name}</CardLink><br/>
                     

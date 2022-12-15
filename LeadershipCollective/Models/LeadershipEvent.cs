@@ -31,5 +31,6 @@ namespace LeadershipCollective.Models
         public int UserProfileId { get; set; }
 
         public UserProfile UserProfile { get; set; }
+        public string DateString => Date.ToString("dddd, dd MMMM yyyy");
     }
 }

@@ -16,7 +16,7 @@ return (<section>
       </CardText>
       <CardText>
         <small className="text-muted">
-          {event.date}
+          {event.dateString}
         </small><br/>
         <small className="text-muted">
           {event.location}

@@ -18,7 +18,7 @@ export const LeadershipEventDetails = ({event, getLeadershipEvents})=> {
             </th>
                 
             <td>
-                {event.date}
+                {event.dateString}
             </td>
             <td>
                 {event.location} 

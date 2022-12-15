@@ -43,8 +43,11 @@ nav{
     color:black
 }
 .homeEventSectionTitle{
-    color:rgb(205, 98, 56);
+    color:rgb(242, 97, 39);
     font-size:x-large;
+}
+.eventTitle{
+    color:rgb(165, 77, 4);
 }
 .homeEvents{
     display:flex;

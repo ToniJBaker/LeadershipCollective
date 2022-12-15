@@ -10,7 +10,7 @@ export const ConsultantMessageDetails = ({message, changeMessageState})=> {
     return (<>
           
           <div>{message.userProfile.displayName} : {message.content}</div>
-          <div className="text-muted">{message.dateCreated}</div> 
+          <div className="text-muted">{message.dateCreatedString}</div> 
           {localUser.id === message.userProfileId
             ?<div>
               

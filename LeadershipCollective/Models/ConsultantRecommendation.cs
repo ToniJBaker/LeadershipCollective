@@ -48,7 +48,7 @@ namespace LeadershipCollective.Models
 
         public List<ConsultantRecMessage> Messages { get; set;}
 
-
+        public string DateCreatedString => DateCreated.ToString("dddd, dd MMMM yyyy");
 
 
 

@@ -45,9 +45,9 @@ export const EventDetailsEdit = ()=> {
     }
 
 return(<>
-edit the details
+
 <section className="mx-5 mb-5 mt-3 ">
-<h3>Edit Event: {event.title}</h3>
+<h3>Edit Event: </h3><h3 className="eventTitle">{event.title}</h3>
 <div className="border mt-3 p-3">
 <Form onSubmit={handleSave}>
     
@@ -62,7 +62,7 @@ edit the details
     </FormGroup>
     <FormGroup>
         <Label for="date">Date</Label>
-        <Input type="text" name="date" required value={event.date}
+        <Input type="date" name="date" required value={event.date}
         onChange={(e) => {
         const eventCopy = { ...event };
         eventCopy.date = e.target.value;
