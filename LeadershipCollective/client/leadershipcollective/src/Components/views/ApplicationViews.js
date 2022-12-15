@@ -16,6 +16,7 @@ import { EventAdd } from "../events/EventAdd";
 
 
 
+
 export default function ApplicationViews(){
 return(
 
@@ -28,6 +29,8 @@ return(
     }
 
     <Route path="/users" element={<UserList />} />
+    
+    
     <Route path="/events" element={<EventList />} />
     <Route path="/events/add" element={<EventAdd />} />
 

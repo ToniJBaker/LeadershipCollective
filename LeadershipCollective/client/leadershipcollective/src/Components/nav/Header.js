@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import { logout, getCurrentUser } from '../../Managers/UserProfileManager';
 import {
@@ -8,12 +8,14 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,CardLink
 } from 'reactstrap';
 
 export const Header = ({isLoggedIn, setIsLoggedIn}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const [time, setTime] = useState(null)
+    
     
     let localUser
     localStorage.getItem("userProfile") ?
@@ -21,7 +23,21 @@ export const Header = ({isLoggedIn, setIsLoggedIn}) => {
     :
      localUser = {userTypeId: 0}
 
-    
+      //useEffect to observe current time state
+    useEffect (
+      ()=>{
+          let time = getCurrentTime()
+          setTime(time)
+      },[])
+  
+  //function to get current time-military time
+  const getCurrentTime = ()=>{
+      let today = new Date()
+      let hours = (today.getHours() < 10? "0" :"") + today.getHours()
+      let minutes = (today.getMinutes()< 10? "0" :"") + today.getMinutes()
+      let seconds = (today.getSeconds()< 10? "0" :"") + today.getSeconds()
+      return hours + ":" + minutes +":" + seconds
+    }
 
 return(
 
@@ -84,7 +100,18 @@ return(
               </>
             }
           </Nav>
+          
     </Collapse>
+      <>
+      <Nav>
+          <CardLink className="homeLink">
+            Welcome {localUser.fullName}
+          </CardLink>
+          <div style={{marginLeft:'15px'}}>
+          {new Date().toUTCString().slice(0,16)}
+          </div>
+      </Nav>
+      </>
 </Navbar> 
     )
 

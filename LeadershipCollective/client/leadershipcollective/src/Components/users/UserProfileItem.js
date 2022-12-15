@@ -6,17 +6,16 @@ export const UserProfileItem = ({user}) => {
     
     return (<>
         <tr>
-            <th scope="row">
-                <Link to={`/userProfile/${user.id}`} className="m-5"> 
-                    {user.fullName}
-                </Link>
-            </th>
+            
+            <td>
+                {user.fullName}
+            </td>
             <td>
                 {user.displayName}
             </td>
             
             <td>
-                {user.userType.name} 
+                {user.userType.name} <Link to={`/users/${user.id}/editUserType`}>Edit</Link> 
             </td>
 
         </tr>

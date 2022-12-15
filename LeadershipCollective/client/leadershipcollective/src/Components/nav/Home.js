@@ -38,7 +38,7 @@ export const Home = ()=> {
         </section>
 
         <section className="homeEvents">
-        <div className="homeEventSectionTitle">Conferences and Events</div>
+        <div className="homeEventSectionTitle">2023 Conferences and Events</div>
 
             {
                 leadershipEvents.map((event) => (
