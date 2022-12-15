@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { getAllEvents } from "../../Managers/LeadershipEventManager";
 import { LeadershipEventDetails } from "./LeadershipEventDetails";
-import { Table } from "reactstrap";
+import { CardLink, Table } from "reactstrap";
 
 
 export const EventList = ()=> {
@@ -18,6 +18,8 @@ export const EventList = ()=> {
 return (<>
 
 <h4 className="m-5">All Events</h4>
+<CardLink href="/events/add" className="m-5">Add Event</CardLink>
+
     <div className="m-5">
     <Table>
       <thead>
@@ -26,6 +28,8 @@ return (<>
           <th>Date</th>
           <th>Location</th>
           <th>View Details</th>
+          <th>Delete Event</th>
+
         </tr>
       </thead>
       <tbody>

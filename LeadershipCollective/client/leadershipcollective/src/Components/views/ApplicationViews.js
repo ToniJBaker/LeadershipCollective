@@ -12,6 +12,7 @@ import { MyMediaRecommendations } from "../recommendations/MyMediaRecommendation
 import { About } from "../nav/About";
 import { EventList } from "../events/EventList";
 import { EventDetailsEdit } from "../events/EventDetailsEdit";
+import { EventAdd } from "../events/EventAdd";
 
 
 
@@ -28,6 +29,8 @@ return(
 
     <Route path="/users" element={<UserList />} />
     <Route path="/events" element={<EventList />} />
+    <Route path="/events/add" element={<EventAdd />} />
+
     <Route path="/event/:id/edit" element={<EventDetailsEdit />} />
 
 

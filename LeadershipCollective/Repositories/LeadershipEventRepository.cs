@@ -150,13 +150,13 @@ namespace LeadershipCollective.Repositories
                                           Date = @date,
                                           Location = @location,
                                           LinkAddress = @linkAddress,
-                                          ImageLocation = @imageLocation,
+                                          ImageLocation = @imageLocation
                                     WHERE Id = @id";
 
                     cmd.Parameters.AddWithValue("@title", DbUtils.ValueOrDBNull(leadershipEvent.Title));
                     cmd.Parameters.AddWithValue("@content",leadershipEvent.Content);
                     cmd.Parameters.AddWithValue("@date", leadershipEvent.Date);
-                    cmd.Parameters.AddWithValue("@loation",leadershipEvent.Location);
+                    cmd.Parameters.AddWithValue("@location",leadershipEvent.Location);
                     cmd.Parameters.AddWithValue("@linkAddress", DbUtils.ValueOrDBNull(leadershipEvent.LinkAddress));
                     cmd.Parameters.AddWithValue("@imageLocation", DbUtils.ValueOrDBNull(leadershipEvent.ImageLocation));
                    

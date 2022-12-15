@@ -1,6 +1,7 @@
 import React from "react";
 import { CardLink } from "reactstrap";
 import { Link } from "react-router-dom";
+import { EventDelete } from "./EventDelete";
 
 export const LeadershipEventDetails = ({event})=> {
     
@@ -24,6 +25,9 @@ export const LeadershipEventDetails = ({event})=> {
             </td>
             <td>
             <CardLink href={event.linkAddress}>Register for Event</CardLink>
+            </td>
+            <td>
+            <EventDelete key={event.id} event={event} />
             </td>
 
         </tr>
