@@ -8,7 +8,6 @@ export const MyConsultantRecommendations = ()=> {
 const localUser = getCurrentUser();
 const [myConsultantRecommendations, setMyConsultantRecommendations] = useState([]);
 
-
 const getMyConsultantRecommendations = ()=> {
     getConsultantRecommendations().then(recommendations =>
         {
@@ -19,6 +18,10 @@ const getMyConsultantRecommendations = ()=> {
 useEffect(()=>{
     getMyConsultantRecommendations();
 }, []);
+
+    
+
+
 
 
 
@@ -51,9 +54,10 @@ return(<>
                     <img alt="Card cap" src="https://picsum.photos/318/180" width="100%"/>
                 <CardBody>
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
-                    <CardLink href={`/myConsultantRecommendation/${rec.id}`}>Recommendation</CardLink>
+                    <CardLink href={`/myConsultantRecommendation/${rec.id}`}>View Details</CardLink>
                     <CardLink href={rec.linkAddress}>{rec.name}</CardLink><br/>
-                    <CardLink href={`/myConsultantRecommendations/${rec.id}/edit`} >Edit</CardLink>
+                    
+                    
                     
 
 

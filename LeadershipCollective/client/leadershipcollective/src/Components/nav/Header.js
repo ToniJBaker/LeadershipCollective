@@ -43,9 +43,18 @@ return(
                     <NavItem>
                       <NavLink tag={RRNavLink} to="/users">Manage Users</NavLink>
                     </NavItem>
+                    
                   
                 : ""
-              }    
+              }   
+              {localUser.userTypeId === 1 
+                ? 
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/events">Events</NavLink>
+                    </NavItem>
+                 
+                : ""
+              }     
               <NavItem>
                 <NavLink tag={RRNavLink} to="/aboutApplication">About</NavLink>
               </NavItem>          

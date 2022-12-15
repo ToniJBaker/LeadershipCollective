@@ -20,9 +20,16 @@ namespace LeadershipCollective.Models
         [Required]
         [MaxLength(1000)]
         public string LinkAddress { get; set; }
+        [Required]
+        [MaxLength(1000)]
+        public string ImageLocation { get; set; }
 
         [Required]
         [MaxLength(1000)]
         public string Content { get; set; }
+
+        public int UserProfileId { get; set; }
+
+        public UserProfile UserProfile { get; set; }
     }
 }

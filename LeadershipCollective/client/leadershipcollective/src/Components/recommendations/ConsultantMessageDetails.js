@@ -3,7 +3,7 @@ import { getCurrentUser } from "../../Managers/UserProfileManager";
 import { ConsultantMessageEdit } from "./ConsultantMessageEdit";
 import { ConsultantMessageDelete } from "./ConsultantMessageDelete";
 
-export const ConsultantMessageDetails = ({message})=> {
+export const ConsultantMessageDetails = ({message, changeMessageState})=> {
     const localUser = getCurrentUser();
     
     
@@ -14,8 +14,8 @@ export const ConsultantMessageDetails = ({message})=> {
           {localUser.id === message.userProfileId
             ?<div>
               
-              <ConsultantMessageEdit message={message}/> 
-              <ConsultantMessageDelete message={message}/>
+              <ConsultantMessageEdit message={message} changeMessageState={changeMessageState}/> 
+              <ConsultantMessageDelete message={message} changeMessageState={changeMessageState}/>
               
             </div>
             :""

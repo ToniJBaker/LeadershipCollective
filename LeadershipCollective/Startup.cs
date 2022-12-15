@@ -34,6 +34,8 @@ namespace LeadershipCollective
             services.AddTransient<IConsultantMessageRepository, ConsultantMessageRepository>();
             services.AddTransient<ISubjectRepository, SubjectRepository>();
             services.AddTransient<IResourceTypeRepository, ResourceTypeRepository>();
+            services.AddTransient<ILeadershipEventRepository, LeadershipEventRepository>();
+
 
 
             services.AddControllers();

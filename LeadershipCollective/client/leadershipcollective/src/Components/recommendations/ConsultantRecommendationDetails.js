@@ -34,6 +34,7 @@ export const ConsultantRecommendationDetails =()=> {
       }
       addConsultantRecMessage(newConsultantMessageToApi)
       .then((m)=>{
+        console.log("this is m in add consultant rec message", m)
         setConsultantRecommendation(m)
       })
       .then(()=>{setWasMessagePosted(!wasMessagePosted)});
@@ -87,7 +88,7 @@ return(<>
       </Form>
       
       <section className="contentMessages" >
-        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message} />))}        
+        {consultantRecommendation?.messages?.map((message)=> (<ConsultantMessageDetails key={message.id} message={message} changeMessageState={getConRecommendation } />))}        
       </section>
     
     </div>

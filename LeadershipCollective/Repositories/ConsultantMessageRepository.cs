@@ -184,7 +184,7 @@ namespace LeadershipCollective.Repositories
                     cmd.CommandText = @"
                             UPDATE ConsultantRecMessage
                                     SET
-                                        Content = @content,
+                                        Content = @content
                                     WHERE Id = @id";
 
                     

@@ -28,7 +28,7 @@ export const MyConsultantRecommendationDetails =()=> {
   const handleDelete= () => { //delete button confirmation
     deleteConsultationRecommendation(consultantRecommendation.id)
     
-    .then(navigate("/myConsultantRecommendations"))
+    .then(()=> {navigate("/myConsultantRecommendations")})
  
   };
 
@@ -60,7 +60,7 @@ return(<>
         {confirmDelete ?
                     <ListGroup flush>
                         <ListGroupItem className="text-danger">
-                            Are you sure you want to delete this post?
+                            Are you sure you want to delete this recommendation?
                         </ListGroupItem>
                         <ListGroup flush>
                             <ListGroupItem>
@@ -74,6 +74,7 @@ return(<>
                         </ListGroup>
                     </ListGroup>
                     : <></>}
+        <CardLink className="text-muted" href={`/myConsultantRecommendations/${consultantRecommendation.id}/edit`} >Edit</CardLink>
         <hr/>
         <CardLink href={consultantRecommendation.linkAddress}  className="text-muted" >{consultantRecommendation.name} Web Page</CardLink><br/>
         <small className="text-muted">Recommended by {consultantRecommendation.userProfile?.fullName} </small>

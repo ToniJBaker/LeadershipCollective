@@ -62,13 +62,10 @@ const handleSave = (e)=> {  //handle saving new information into edit recommenda
         resourceTypeId: parseInt(myConsultantRecommendation.resourceTypeId), 
     };
     updateConsultantRecommendation(editedRecommendation).then(() => navigate(`/myConsultantRecommendations/`));
-
 }
-const handleCancel = (e)=> { //cancel and go back to list of my recommendations
+const handleCancel = (e)=> { //cancel and go back to details of recommendation
     e.preventDefault();
-    navigate("/myConsultantRecommendations")
-
-
+    navigate(`/myConsultantRecommendation/${id}`)
 }
 
 

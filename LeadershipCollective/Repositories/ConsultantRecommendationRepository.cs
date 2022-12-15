@@ -271,19 +271,19 @@ namespace LeadershipCollective.Repositories
             {
                 conn.Open();
 
-                // The first SQL command deletes the comments belonging to the post to be deleted
-                //using (var cmd = conn.CreateCommand())
-                //{
-                //    cmd.CommandText = @"
-                //        DELETE FROM Comment
-                //        WHERE PostId = @id";
+                //The first SQL command deletes the comments belonging to the post to be deleted
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        DELETE FROM ConsultantRecMessage
+                        WHERE ConsultantRecommendationId = @id";
 
-                //    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@id", id);
 
-                //    cmd.ExecuteNonQuery();
-                //}
+                    cmd.ExecuteNonQuery();
+                }
 
-                // The second SQL command deletes the post itself
+                //The second SQL command deletes the post itself
                 using (var cmd2 = conn.CreateCommand())
                 {
                     cmd2.CommandText = @"

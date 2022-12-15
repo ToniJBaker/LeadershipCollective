@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, ListGroupItem, Button, CardLink } from "reactstrap";
 import { deleteConsultantRecMessage } from "../../Managers/ConsultantRecMessageManager";
 
-export const ConsultantMessageDelete = ({message}) => {
+export const ConsultantMessageDelete = ({message , changeMessageState}) => {
     const [confirmDelete, setConfirmDelete] = useState(false);
     
 
@@ -14,7 +14,7 @@ export const ConsultantMessageDelete = ({message}) => {
     const handleDelete= (e) => { //delete button confirmation
         e.preventDefault();
         deleteConsultantRecMessage(message.id)
-        //struggling with what do here
+        .then((res)=>{changeMessageState(res)});//struggling with what do here
     }
 return(<>
     <CardLink href={"javascript:void(0)"} onClick={toggleDeleteConfirm} className="text-muted"  >Delete</CardLink>
