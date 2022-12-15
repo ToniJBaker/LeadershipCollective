@@ -14,7 +14,7 @@ export const ConsultantMessageDelete = ({message , changeMessageState}) => {
     const handleDelete= (e) => { //delete button confirmation
         e.preventDefault();
         deleteConsultantRecMessage(message.id)
-        .then((res)=>{changeMessageState(res)});//struggling with what do here
+        .then((res)=>{changeMessageState(res)});
     }
 return(<>
     <CardLink href={"javascript:void(0)"} onClick={toggleDeleteConfirm} className="text-muted"  >Delete</CardLink>

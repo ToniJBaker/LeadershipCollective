@@ -34,7 +34,7 @@ return (<>
       </thead>
       <tbody>
           {leadershipEvents.map((event) => (
-            <LeadershipEventDetails key={event.id} event={event} />
+            <LeadershipEventDetails key={event.id} event={event} getLeadershipEvents={getLeadershipEvents} />
           ))}
       </tbody>
     </Table>

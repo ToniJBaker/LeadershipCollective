@@ -186,7 +186,6 @@ namespace LeadershipCollective.Repositories
                     cmd.Parameters.AddWithValue("@Location",leadershipEvent.Location);
                     cmd.Parameters.AddWithValue("@ImageLocation", DbUtils.ValueOrDBNull(leadershipEvent.ImageLocation));
                     cmd.Parameters.AddWithValue("@LinkAddress", DbUtils.ValueOrDBNull(leadershipEvent.LinkAddress));
-                   
                     cmd.Parameters.AddWithValue("@UserProfileId", leadershipEvent.UserProfileId);
 
                     leadershipEvent.Id = (int)cmd.ExecuteScalar();

@@ -11,10 +11,11 @@ export const EventAdd = ()=> {
 
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
+    const [content, setContent] = useState();
     const [location, setLocation] = useState();
     const [imageLocation, setImageLocation] = useState();
     const [linkAddress, setLinkAddress] = useState();
-    const [content, setContent] = useState();
+   
 
     const handleSave = (e) => { //add new Consultant Recommendation to database
         e.preventDefault();
@@ -30,6 +31,7 @@ export const EventAdd = ()=> {
         e.preventDefault();
         navigate(`/events`)
     }
+    
     return(<>
     <section className="mx-5 mb-5 mt-3 ">
     <h3>Add Event</h3>
