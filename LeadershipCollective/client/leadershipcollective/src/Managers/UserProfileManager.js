@@ -43,3 +43,18 @@ const apiUrl = "https://localhost:5001";
     return fetch(`${apiUrl}/api/userProfile`)//http GET request or  `/api/userProfile`
       .then((res) => res.json())
   }
+
+  export const getSingleUser = (id) => {
+    return fetch(`${apiUrl}/api/userProfile/${id}`)//http GET request or  `/api/userProfile/${id}`
+      .then((res) => res.json())
+  };
+
+  export const updateUserProfileType = (user) => {
+    return fetch(`${apiUrl}/api/userProfile/${user.id}/updateUserType`, {
+     method: "PUT",
+     headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user) 
+    })
+  };
