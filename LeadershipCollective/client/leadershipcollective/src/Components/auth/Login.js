@@ -30,7 +30,7 @@ export const Login = ({ setIsLoggedIn }) => {
 
   return (
     <div className="m-5">
-      <Form onSubmit={loginSubmit}>
+      <Form className="loginForm" onSubmit={loginSubmit}>
         <fieldset>
           <FormGroup>
             <Label for="email">Email</Label>

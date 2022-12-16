@@ -29,7 +29,7 @@ export const Home = ()=> {
             </div>
             
             <div className="searchItem">
-            <Link className="searchText" >Search Articles/Books/Videos</Link>
+            <Link to="/mediaRecommendations" className="searchText" >Search Articles/Books/Videos</Link>
             </div>
         </section>
         <section className="homeMyRecommendations">
