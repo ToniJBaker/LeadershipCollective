@@ -76,5 +76,17 @@ namespace LeadershipCollective.Controllers
         //public void Delete(int id)
         //{
         //}
+
+        [HttpPut("{id}/updateUserType")]
+        public IActionResult PutUpdateUserType(int id, UserProfile userProfile)
+        {
+
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            _userProfileRepository.UpdateUserType(id, userProfile);
+            return Ok(userProfile);
+        }
     }
 }

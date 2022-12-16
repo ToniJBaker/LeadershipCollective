@@ -10,5 +10,6 @@ namespace LeadershipCollective.Repositories
         UserProfile GetById(int id);
         UserProfile GetByEmail(string email);
         void Add(UserProfile userProfile);
+        void UpdateUserType(int id, UserProfile userProfile);
     }
 }

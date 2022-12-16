@@ -13,6 +13,7 @@ import { About } from "../nav/About";
 import { EventList } from "../events/EventList";
 import { EventDetailsEdit } from "../events/EventDetailsEdit";
 import { EventAdd } from "../events/EventAdd";
+import { UserProfileTypeEdit } from "../users/UserProfileTypeEdit";
 
 
 
@@ -29,7 +30,7 @@ return(
     }
 
     <Route path="/users" element={<UserList />} />
-    <Route path="/users/:id/editUserType" element={<UserList />} />
+    <Route path="/users/:id/editUserType" element={<UserProfileTypeEdit />} />
 
     <Route path="/events" element={<EventList />} />
     <Route path="/events/add" element={<EventAdd />} />
