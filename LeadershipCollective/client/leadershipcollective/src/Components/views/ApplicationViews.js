@@ -29,8 +29,8 @@ return(
     }
 
     <Route path="/users" element={<UserList />} />
-    
-    
+    <Route path="/users/:id/editUserType" element={<UserList />} />
+
     <Route path="/events" element={<EventList />} />
     <Route path="/events/add" element={<EventAdd />} />
 

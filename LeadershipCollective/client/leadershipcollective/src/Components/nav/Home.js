@@ -39,12 +39,13 @@ export const Home = ()=> {
 
         <section className="homeEvents">
         <div className="homeEventSectionTitle">2023 Conferences and Events</div>
-
+            <div className="eventCard">
             {
                 leadershipEvents.map((event) => (
                     <EventsToDisplay key={event.id} event={event} />
                 ))
             }
+            </div>
         </section>
     
     </div>

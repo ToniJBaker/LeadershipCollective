@@ -5,8 +5,8 @@ import {  Card, CardImg, CardTitle,  CardText, CardBody, CardLink } from "reacts
 
 export const EventsToDisplay = ({event})=> {
 
-return (<section>
-<Card className="eventCard">
+return (<section  >
+<Card className="eachCard" >
 <CardBody>
       <CardTitle tag="h5">
         {event.title}
@@ -29,7 +29,7 @@ return (<section>
       bottom
       src={event.imageLocation}
       style={{
-        height: 250
+        height: 200
         
       }}
       width="50%"

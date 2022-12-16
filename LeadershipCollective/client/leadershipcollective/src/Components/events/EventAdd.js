@@ -63,7 +63,7 @@ export const EventAdd = ()=> {
                 onChange={(e) => setImageLocation(e.target.value)} />
             </FormGroup>
             <FormGroup>
-                <Label for="linkAddress">Content/Details</Label>
+                <Label for="linkAddress">Link to Register For Event</Label>
                 <Input type="text" id="linkAddress" required placeholder="Add Link to Register or Null"
                 onChange={(e) => setLinkAddress(e.target.value)} />
             </FormGroup>
