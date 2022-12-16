@@ -6,7 +6,11 @@ export const About = ()=> {
 return(<>
 <h1>Our Purpose</h1>
     <section className="aboutParagraph">
-        Higher Education Leaders require quality resources for institutional advancement. Access to best resources can make an approach to change an efficient process. From Strategic Planning to Budgets to Diversity and Inclusion, our purpose is to provide knowledge of best resources.   
+        <div>Institutions of Higher Education are regularly affected by internal challenges and by external pressures, requiring a continuous charge for marked advancement.  Over the last 50 years alone, there have been social and technological changes that push institutions toward a trajectory of increased complexity and comprehensiveness. </div><br/> 
+        
+        <div>Higher Ed Leaders require quality resources for institutional development. Access to best resources can make an approach to change an efficient process. Leaders need access and awareness of best, most current innovation. From Strategic Planning, to Budgets, to Diversity and Inclusion, our purpose is to provide knowledge of best resources. </div>
+
+
     </section>
 <UncontrolledCarousel
   items={[
