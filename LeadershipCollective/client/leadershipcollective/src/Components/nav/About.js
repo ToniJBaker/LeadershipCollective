@@ -8,7 +8,9 @@ return(<>
     <section className="aboutParagraph">
         <div>Institutions of Higher Education are regularly affected by internal challenges and by external pressures, requiring a continuous charge for marked advancement.  Over the last 50 years alone, there have been social and technological changes that push institutions toward a trajectory of increased complexity and comprehensiveness. </div><br/> 
         
-        <div>Higher Ed Leaders require quality resources for institutional development. Access to best resources can make an approach to change an efficient process. Leaders need access and awareness of best, most current innovation. From Strategic Planning, to Budgets, to Diversity and Inclusion, our purpose is to provide knowledge of best resources. </div>
+        <div>High performing leaders can create dynamic organizations.  Strong leadership can benefit the employees and students of the college, and also the community.  A great college enhances socio-economic mobility, and can improve the economy and performance of a community. </div><br/>
+        <div>Even the best community college leaders need development.  Even more importantly, the middle managers that are transitioning into leadership must be supported, and guide their divisions forward.</div><br/>
+        <div>External partners, supports, and resources are essential to develop these leaders.  Very few colleges have the resources to have extensive internal development plans, and even they benefit from strong external connections.  Training resources, facilitators, and trainers help college leaders excel in their roles and help their colleges solve community challenges.</div>
 
 
     </section>
