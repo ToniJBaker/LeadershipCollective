@@ -42,6 +42,9 @@ namespace LeadershipCollective.Models
 
         public Subject Subject { get; set; }
         //public List<MediaRecMessage> Messages { get; set; }
+        public string PublicationDateString => PublicationDate.ToString("dddd, dd MMMM yyyy");
+        public string DateCreatedString =>DateCreated.ToString("dddd, dd MMMM yyyy");
+
 
     }
 }

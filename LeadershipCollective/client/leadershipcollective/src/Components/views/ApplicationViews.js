@@ -15,6 +15,7 @@ import { EventDetailsEdit } from "../events/EventDetailsEdit";
 import { EventAdd } from "../events/EventAdd";
 import { UserProfileTypeEdit } from "../users/UserProfileTypeEdit";
 import { MediaRecommendationsList } from "../mediaRecommendations/MediaRecommendationsList";
+import { MediaRecommendationDetails } from "../mediaRecommendations/MediaRecommendationDetails";
 
 
 
@@ -40,7 +41,9 @@ return(
     <Route path="/aboutApplication" element={<About />} />
 
     <Route path="/mediaRecommendations" element={<MediaRecommendationsList />} />
-
+    <Route path="/mediaRecommendation/:id" element={<MediaRecommendationDetails />} />
+    <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
+   
 
     <Route path="/consultantRecommendations" element={<ConsultantRecommendationsList />} />
     <Route path="/consultantRecommendation/:id" element={<ConsultantRecommendationDetails />} />
@@ -51,7 +54,7 @@ return(
     
 
 
-    <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
+   
 
 
 
