@@ -3,6 +3,10 @@
     background-color: rgb(195, 210, 210);
     padding: 2em;
 }
+.registerForm{
+    background-color: rgb(195, 210, 210);
+    padding:2em;  
+}
 nav{
     height:250px;
     background-image:url("https://images.unsplash.com/photo-1669661007953-33861e3bd46e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxhbGx8NDQ5fHx8fHx8Mnx8MTY3MDM0NzIyNQ&ixlib=rb-4.0.3&q=80&w=2560");
@@ -89,6 +93,15 @@ nav{
 .addRecommendationLink {
     color:rgba(243,180,107,0.9)
 }
+.addConsultantRecommendation{
+    background-color: rgb(195, 210, 210);
+    padding:2em;
+}
+.editConsultantRecommendation{
+    background-color: rgb(195, 210, 210);
+    padding:2em; 
+}
+
 .headerMessages{
     margin-left:2em;
     margin-right:2em;
@@ -105,6 +118,14 @@ nav{
     background-color: rgb(173, 115, 76);
     font-size: 18px;
     padding:2em;
+}
+.addEventForm{
+    background-color: rgb(195, 210, 210);
+    padding:2em;  
+}
+.editEventForm{
+    background-color: rgb(195, 210, 210);
+    padding:2em;  
 }
 
 

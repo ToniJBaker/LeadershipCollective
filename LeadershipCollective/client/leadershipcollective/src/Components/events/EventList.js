@@ -21,7 +21,7 @@ return (<>
 <CardLink href="/events/add" className="m-5">Add Event</CardLink>
 
     <div className="m-5">
-    <Table>
+    <Table  >
       <thead>
         <tr>
           <th>Event Title</th>

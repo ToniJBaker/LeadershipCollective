@@ -19,7 +19,7 @@ export const ConsultantMessageDelete = ({message , changeMessageState}) => {
 return(<>
     <CardLink href={"javascript:void(0)"} onClick={toggleDeleteConfirm} className="text-muted"  >Delete</CardLink>
               {confirmDelete ?
-                    <ListGroup flush>
+                    <ListGroup   flush>
                         <ListGroupItem className="text-danger">
                             This message will permanently be deleted.
                             Are you sure you want to delete this message?

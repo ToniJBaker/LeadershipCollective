@@ -49,7 +49,7 @@ return(<>
 <section className="mx-5 mb-5 mt-3 ">
 <h3>Edit Event: </h3><h3 className="eventTitle">{event.title}</h3>
 <div className="border mt-3 p-3">
-<Form onSubmit={handleSave}>
+<Form className="editEventForm" onSubmit={handleSave}>
     
     <FormGroup>
         <Label for="title">Title</Label>
