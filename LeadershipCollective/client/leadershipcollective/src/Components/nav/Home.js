@@ -21,7 +21,7 @@ export const Home = ()=> {
     return (
     <div className="homePage">
     
-     <h1 >Best Resources for Higher Education Leaders</h1>
+     <h4 >Best Resources for Higher Education Leaders</h4>
         
         <section className="homeSearchItems">
             <div className="searchItem">

@@ -36,6 +36,8 @@ export const ConsultantRecommendationsList = () =>{
     };
     
     return(<>
+    <h3>Consultant/Facilitator Recommendations</h3>
+
         <Input type="select" name="tags" defaultValue="none" onChange={handleSelect}  >
                 <option value="none" disabled hidden>Search By Subject</option>
                             <option value="true"   > Get All </option>
