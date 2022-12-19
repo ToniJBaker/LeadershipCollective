@@ -23,9 +23,28 @@ export const MediaRecommendationsList = ()=> {
     useEffect(()=>{
         getAllMediaRecommendations();
     },[]);
+
+    // const handleSelect = (e)=> {
+    //     e.preventDefault(); 
+    //     if(e.target.value === "true"){
+    //         getAllConRecommendations();
+    //     }
+    //     else{
+    //         searchConsultantRecommendationsBySubjectId(e.target.value) //use .then when you have a fetch call
+    //         .then ((rec)=>setAllConsultantRecommendations(rec))
+    //     }
+        
+    // };
     
     return (<>
-    <h3>Media Recommendations List Goes Here</h3>
+    <h3>Media Recommendations</h3>
+    <Input type="select" name="tags" defaultValue="none" onChange={""}  >
+                <option value="none" disabled hidden>Search By Subject</option>
+                            <option value="true"   > Get All </option>
+                            {subjects.map((s) => (
+                                <option key={s.id} value={s.id}>{s.name}</option>
+                            ))}
+    </Input>
     <section className="allRecommendations">
         {allMediaRecommendations.map((rec) => (
             <Card key={rec.id} style={{width: '20rem'}} >
@@ -45,7 +64,7 @@ export const MediaRecommendationsList = ()=> {
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
                     <CardText> On: {rec.dateCreatedString}</CardText>
                     <CardLink href={`/mediaRecommendation/${rec.id}`} >View Details</CardLink>
-                    {/* <CardLink href={rec.linkAddress}>{rec.name}</CardLink> */}
+                    <CardLink href={rec.linkAddress}>{rec.title}</CardLink>
                 </CardBody>
             </Card>))}
         </section>
