@@ -13,6 +13,9 @@ export const UserProfileItem = ({user}) => {
             <td>
                 {user.displayName}
             </td>
+            <td>
+                {user.email}
+            </td>
             
             <td>
                 {user.userType.name} <Link to={`/users/${user.id}/editUserType`}>Edit</Link> 

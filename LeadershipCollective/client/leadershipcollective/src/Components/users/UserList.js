@@ -26,6 +26,7 @@ export const UserList = () => {
         <tr>
           <th>Full Name</th>
           <th>Display Name</th>
+          <th>Email</th>
           <th>User Type</th>
          
           
