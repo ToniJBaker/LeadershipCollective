@@ -63,5 +63,11 @@ namespace LeadershipCollective.Controllers
             _mediaRecommendationRepository.Delete(id);
             return NoContent();
         }
+        // GET api/<ConsultantRecommendationController>/5
+        [HttpGet("search/{id}")]
+        public IActionResult Search(int id)
+        {
+            return Ok(_mediaRecommendationRepository.SearchMediaBySubjectId(id));
+        }
     }
 }

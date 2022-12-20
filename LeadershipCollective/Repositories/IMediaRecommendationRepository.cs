@@ -11,6 +11,8 @@ namespace LeadershipCollective.Repositories
 
         void Update(MediaRecommendation mediRecommendation);
         void Delete(int id);
+        List<MediaRecommendation> SearchMediaBySubjectId(int id);
+
 
 
     }
