@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllSubjects } from "../../Managers/SubjectManager";
 import { Input,Card, CardBody, CardTitle, CardSubtitle, CardLink, CardText } from "reactstrap"
-import { getMediaRecommendations } from "../../Managers/MediaRecommendationManager";
+import { getMediaRecommendations, searchMediaRecommendationsBySubjectId } from "../../Managers/MediaRecommendationManager";
 
 
 export const MediaRecommendationsList = ()=> {
@@ -24,21 +24,21 @@ export const MediaRecommendationsList = ()=> {
         getAllMediaRecommendations();
     },[]);
 
-    // const handleSelect = (e)=> {
-    //     e.preventDefault(); 
-    //     if(e.target.value === "true"){
-    //         getAllConRecommendations();
-    //     }
-    //     else{
-    //         searchConsultantRecommendationsBySubjectId(e.target.value) //use .then when you have a fetch call
-    //         .then ((rec)=>setAllConsultantRecommendations(rec))
-    //     }
+    const handleSelect = (e)=> {
+        e.preventDefault(); 
+        if(e.target.value === "true"){
+            getAllMediaRecommendations();
+        }
+        else{
+            searchMediaRecommendationsBySubjectId(e.target.value) //use .then when you have a fetch call
+            .then ((rec)=>setAllMediaRecommendations(rec))
+        }
         
-    // };
+    };
     
     return (<>
     <h3>Media Recommendations</h3>
-    <Input type="select" name="tags" defaultValue="none" onChange={""}  >
+    <Input type="select" name="tags" defaultValue="none" onChange={handleSelect}  >
                 <option value="none" disabled hidden>Search By Subject</option>
                             <option value="true"   > Get All </option>
                             {subjects.map((s) => (

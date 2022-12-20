@@ -74,7 +74,7 @@ return(<>
 <section className="mx-5 mb-5 mt-3 ">
             <h3>Edit My Recommendation for Consultant: {myConsultantRecommendation.name}</h3>
             <div className="border mt-3 p-3">
-                <Form onSubmit={handleSave}>
+                <Form className="editConsultantRecommendation" onSubmit={handleSave}>
                     <FormGroup>
                         <Label for="name">Name</Label>
                         <Input type="text" name="name" required value={myConsultantRecommendation.name}

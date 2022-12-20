@@ -58,7 +58,7 @@ return(<>
  <section className="mx-5 mb-5 mt-3 ">
             <h3>New Recommendation for Consultant or Facilitator</h3>
             <div className="border mt-3 p-3">
-                <Form onSubmit={handleSave}>
+                <Form className="addConsultantRecommendation" onSubmit={handleSave}>
                     <FormGroup>
                         <Label for="name">Name</Label>
                         <Input type="text" id="name" required placeholder="Consultant Name"

@@ -8,7 +8,7 @@ import { MyConsultantRecommendations } from "../recommendations/MyConsultantReco
 import { MyConsultantRecommendationDetails } from "../recommendations/MyConsultantRecommendationDetails";
 import { MyConsultantRecommendationEdit } from "../recommendations/MyConsultationRecommendationEdit";
 import { UserList } from "../users/UserList";
-import { MyMediaRecommendations } from "../recommendations/MyMediaRecommendations";
+import { MyMediaRecommendations } from "../mediaRecommendations/MyMediaRecommendations";
 import { About } from "../nav/About";
 import { EventList } from "../events/EventList";
 import { EventDetailsEdit } from "../events/EventDetailsEdit";
@@ -16,6 +16,9 @@ import { EventAdd } from "../events/EventAdd";
 import { UserProfileTypeEdit } from "../users/UserProfileTypeEdit";
 import { MediaRecommendationsList } from "../mediaRecommendations/MediaRecommendationsList";
 import { MediaRecommendationDetails } from "../mediaRecommendations/MediaRecommendationDetails";
+import { MyMediaRecommendationEdit } from "../mediaRecommendations/MyMediaRecommendationEdit";
+import { MyMediaRecommendationDetails } from "../mediaRecommendations/MyMediaRecommendationDetails";
+
 
 
 
@@ -43,6 +46,10 @@ return(
     <Route path="/mediaRecommendations" element={<MediaRecommendationsList />} />
     <Route path="/mediaRecommendation/:id" element={<MediaRecommendationDetails />} />
     <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
+    <Route path="/myMediaRecommendations/:id" element={<MyMediaRecommendationDetails />} />
+    <Route path="/myMediaRecommendations/:id/edit" element={<MyMediaRecommendationEdit />} />
+
+
    
 
     <Route path="/consultantRecommendations" element={<ConsultantRecommendationsList />} />

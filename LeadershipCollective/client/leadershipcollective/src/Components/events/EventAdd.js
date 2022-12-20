@@ -36,7 +36,7 @@ export const EventAdd = ()=> {
     <section className="mx-5 mb-5 mt-3 ">
     <h3>Add Event</h3>
     <div className="border mt-3 p-3">
-        <Form onSubmit={handleSave}>
+        <Form className="addEventForm" onSubmit={handleSave}>
             <FormGroup>
                 <Label for="title">Title of Event</Label>
                 <Input type="text" id="title" required placeholder="Event Title"

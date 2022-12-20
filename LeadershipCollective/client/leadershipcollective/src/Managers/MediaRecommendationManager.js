@@ -38,3 +38,7 @@ export const updateMediaRecommendation = (mediaRecommendation) => {
         method:"DELETE"
     })
   };
+  export const searchMediaRecommendationsBySubjectId = (id) => {
+    return fetch(`${apiUrl}/api/MediaRecommendation/search/${id}`)//http GET single mediaRecommendation
+    .then((res)=> res.json())
+  };

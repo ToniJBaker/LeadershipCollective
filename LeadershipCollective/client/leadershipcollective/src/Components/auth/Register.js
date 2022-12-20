@@ -31,7 +31,7 @@ export const Register = ({ setIsLoggedIn }) => {
 
   return (
     <div className="m-5">
-      <Form onSubmit={registerClick}>
+      <Form className="registerForm" onSubmit={registerClick}>
         <fieldset>
           <FormGroup>
             <Label htmlFor="firstName">First Name</Label>

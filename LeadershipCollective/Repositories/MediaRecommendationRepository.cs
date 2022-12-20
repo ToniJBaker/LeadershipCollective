@@ -266,5 +266,84 @@ namespace LeadershipCollective.Repositories
             }
         }
 
+        public List<MediaRecommendation> SearchMediaBySubjectId(int id) //GET List of MediaRecommendations by Subject
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                          SELECT
+                            mr.id AS MediaRecId, mr.Title, mr.Content, mr.Author, mr.PublicationDate, mr.LinkAddress, mr.SubjectId, mr.DateCreated, mr.ResourceTypeId, mr.UserProfileId, 
+
+                            s.Id AS SubjectId, s.Name AS SubjectName, 
+
+                            r.Id AS ResourceTypeId, r.Name AS ResourceTypeName,
+
+                            u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId, u.DisplayName,
+                            ut.Id AS UserTypeId, ut.Name AS UserTypeName
+                            
+                          FROM MediaRecommendation mr
+                          LEFT JOIN Subject s ON mr.SubjectId = s.Id
+                          LEFT JOIN ResourceType r ON mr.ResourceTypeId = r.Id
+                          LEFT JOIN UserProfile u ON mr.UserProfileId = u.Id
+                          LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
+                          WHERE s.Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    MediaRecommendation singleRecommendation = null;
+
+                    var recommendations = new List<MediaRecommendation>();
+                    while (reader.Read())
+                    {
+                        recommendations.Add(new MediaRecommendation()
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("MediaRecId")),
+                            Title = DbUtils.GetString(reader, "Title"),
+                            Content = DbUtils.GetString(reader, "Content"),
+                            Author = DbUtils.GetString(reader, "Author"),
+                            PublicationDate = DbUtils.GetDateTime(reader, "PublicationDate"),
+                            LinkAddress = DbUtils.GetString(reader, "LinkAddress"),
+                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                            SubjectId = id,
+                            ResourceTypeId = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
+                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                            Subject = new Subject()
+                            {
+                                Id = id,
+                                Name = DbUtils.GetString(reader, "SubjectName"),
+                            },
+                            ResourceType = new ResourceType()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
+                                Name = DbUtils.GetString(reader, "ResourceTypeName"),
+                            },
+                            UserProfile = new UserProfile()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                                Email = DbUtils.GetString(reader, "UserEmail"),
+                                UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                UserType = new UserType()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                    Name = DbUtils.GetString(reader, "UserTypeName"),
+                                },
+                            }
+                        });
+                    }
+                    reader.Close();
+
+                    return recommendations;
+
+                }
+            }
+        }
+                
     }
 }
