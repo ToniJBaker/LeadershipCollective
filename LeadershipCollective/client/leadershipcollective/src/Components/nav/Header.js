@@ -42,7 +42,7 @@ export const Header = ({isLoggedIn, setIsLoggedIn}) => {
 return(
 
 <Navbar color="light" light expand="md" >
-        <NavbarBrand tag={RRNavLink} to="/">Leadership Collective</NavbarBrand>
+        <NavbarBrand  tag={RRNavLink} to="/">Leadership Collective</NavbarBrand>
         <NavbarToggler onClick={toggle} />
     <Collapse isOpen={isOpen} navbar>
 
@@ -104,10 +104,10 @@ return(
     </Collapse>
       <>
       <Nav>
-          <CardLink className="homeLink">
+          <div className="homeLink">
             Welcome {localUser.fullName}
-          </CardLink>
-          <div style={{marginLeft:'15px'}}>
+          </div>
+          <div style={{marginLeft:'50px'}}>
           {new Date().toUTCString().slice(0,16)}
           </div>
       </Nav>

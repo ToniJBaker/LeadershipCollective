@@ -19,9 +19,10 @@ export const Home = ()=> {
     
     
     return (
+        
     <div className="homePage">
+    <h4 className="homeSeparator">Recommended Resources for Higher Education Development</h4>
     
-     <h4 >Best Resources for Higher Education Leaders</h4>
         
         <section className="homeSearchItems">
             <div className="searchItem">
