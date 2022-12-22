@@ -1,10 +1,11 @@
 
 .loginForm{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding: 2em;
+
 }
 .registerForm{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding:2em;  
 }
 nav{
@@ -94,11 +95,11 @@ nav{
     color:rgba(243,180,107,0.9)
 }
 .addConsultantRecommendation{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding:2em;
 }
 .editConsultantRecommendation{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding:2em; 
 }
 
@@ -115,17 +116,21 @@ nav{
 }
 .aboutParagraph{
     color:rgb(58, 42, 11);
-    background-color: rgb(173, 115, 76);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     font-size: 18px;
     padding:2em;
 }
 .addEventForm{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding:2em;  
 }
 .editEventForm{
-    background-color: rgb(195, 210, 210);
+    background: linear-gradient(to left,rgb(101, 72, 21),rgb(195, 210, 210));
     padding:2em;  
+}
+.tableList{
+    background: linear-gradient(to left,rgb(62, 142, 125),rgb(195, 210, 210));
+    height: 60rem;
 }
 
 

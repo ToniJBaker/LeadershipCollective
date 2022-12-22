@@ -15,7 +15,7 @@ export const EventList = ()=> {
     },[]);
 
 
-return (<>
+return (<section className="tableList">
 
 <h4 className="m-5">All Events</h4>
 <CardLink href="/events/add" className="m-5">Add Event</CardLink>
@@ -41,6 +41,6 @@ return (<>
     </div>
     
 
-</>)
+</section>)
 
 }
