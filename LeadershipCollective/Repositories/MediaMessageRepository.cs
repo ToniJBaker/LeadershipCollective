@@ -145,7 +145,7 @@ namespace LeadershipCollective.Repositories
                             @Content, @DateCreated, @MediaRecommendationId, @UserProfileId )";
                     cmd.Parameters.AddWithValue("@Content", DbUtils.ValueOrDBNull(mediaRecMessage.Content));
                     cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@ConsultantRecommendationId", mediaRecMessage.MediaRecommendationId);
+                    cmd.Parameters.AddWithValue("@MediaRecommendationId", mediaRecMessage.MediaRecommendationId);
                     cmd.Parameters.AddWithValue("@UserProfileId", mediaRecMessage.UserProfileId);
 
                     mediaRecMessage.Id = (int)cmd.ExecuteScalar();

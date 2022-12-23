@@ -48,6 +48,7 @@ return(
     <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
     <Route path="/myMediaRecommendations/:id" element={<MyMediaRecommendationDetails />} />
     <Route path="/myMediaRecommendations/:id/edit" element={<MyMediaRecommendationEdit />} />
+    <Route path="/addMediaRecommendation" element={<ConsultantRecommendationAdd />} />
 
 
    

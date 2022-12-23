@@ -10,6 +10,7 @@ export const MyMediaRecommendationDetails =()=> {
     const [mediaRecommendation, setMediaRecommendation] = useState({});
     const [confirmDelete, setConfirmDelete] = useState(false);
     
+    
     //get single media recommendation using params (id)
     const getMediaRecommendation = () => {
         getMediaRecommendationById(id).then(singleRecommendation => setMediaRecommendation(singleRecommendation))
@@ -81,7 +82,6 @@ export const MyMediaRecommendationDetails =()=> {
         <small className="text-muted">Recommended by {mediaRecommendation.userProfile?.fullName} </small>
       </CardText>
     </CardBody>
-    
   </Card>
     </>)
 }

@@ -28,7 +28,7 @@ export const MyMediaRecommendations =()=> {
         <Card >
             <div className="addingMyRecommendations">Create Recommendations<br/>
             <Link to="/addConsultantRecommendation" className="addRecommendationLink" >Add New Consultant Recommendation</Link><br/>
-            <Link className="addRecommendationLink">Add New Media Recommendation</Link>
+            <Link to="/addMediaRecommendation" className="addRecommendationLink">Add New Media Recommendation</Link>
             </div>
         </Card>
 
