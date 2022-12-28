@@ -102,7 +102,7 @@ const handleCancel = (e)=> { //cancel and go back to details of recommendation
                     </FormGroup>
                     <FormGroup>
                         <Label for="publicationDate">Publication Date</Label>
-                        <Input type="text" name="publicationDate" value={myMediaRecommendation.publicationDateString}
+                        <Input type="date" name="publicationDate" value={myMediaRecommendation.publicationDateString}
                         onChange={(e) => {
                             const recCopy = { ...myMediaRecommendation };
                             recCopy.publicationDate = e.target.value;

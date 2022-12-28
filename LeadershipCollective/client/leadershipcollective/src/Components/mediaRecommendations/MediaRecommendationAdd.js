@@ -40,7 +40,7 @@ export const MediaRecommendationAdd = ()=> {
     const handleSave = (e) => { //add new Media Recommendation to database
         e.preventDefault();
         const newMediaRecommendationToApi = {
-            title, content, author, publicationDate, linkAddress, subjectId, resourceTypeId, userProfileId  };
+            title, content, author, publicationDate, linkAddress, subjectId, resourceTypeId, userProfileId };
             addMediaRecommendation(newMediaRecommendationToApi)
             .then(()=>{
                 navigate(`/myMediaRecommendations`)
@@ -64,7 +64,7 @@ export const MediaRecommendationAdd = ()=> {
                    
                     <FormGroup>
                         <Label for="content">Content</Label>
-                        <Input type="textarea" id="content" placeholder="Recommendation Here" onChange={(e) => setContent(e.target.value)}/>
+                        <Input type="textarea" id="content" placeholder="Add Your Recommendation (cannot be left blank)" onChange={(e) => setContent(e.target.value)}/>
                     </FormGroup>
                     
                     <FormGroup>
@@ -75,7 +75,7 @@ export const MediaRecommendationAdd = ()=> {
                     
                     <FormGroup>
                         <Label for="publicationDate">Publication Date</Label>
-                        <Input type="text" id="publicationDate" placeholder="Date Published"
+                        <Input type="date" id="publicationDate" placeholder="Date Published"
                         onChange={(e) => setPublicationDate(e.target.value)}/>
                     </FormGroup>
                     
