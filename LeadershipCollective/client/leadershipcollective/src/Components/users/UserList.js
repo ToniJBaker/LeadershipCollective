@@ -18,7 +18,7 @@ export const UserList = () => {
 
     
     
-    return(<>
+    return(<section className="tableList">
     <h4 className="m-5">All Users</h4>
     <div className="m-5">
     <Table>
@@ -40,5 +40,5 @@ export const UserList = () => {
     </Table>
     </div>
     
-    </>)
+    </section>)
 }

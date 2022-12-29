@@ -39,7 +39,7 @@ export const MediaRecommendationsList = ()=> {
     return (<>
     <h3>Media Recommendations</h3>
     <Input type="select" name="tags" defaultValue="none" onChange={handleSelect}  >
-                <option value="none" disabled hidden>Search By Subject</option>
+                <option value="none" disabled hidden>Click to Search By Subject</option>
                             <option value="true"   > Get All </option>
                             {subjects.map((s) => (
                                 <option key={s.id} value={s.id}>{s.name}</option>

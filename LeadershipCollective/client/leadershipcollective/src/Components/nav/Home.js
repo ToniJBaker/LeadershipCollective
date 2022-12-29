@@ -19,9 +19,10 @@ export const Home = ()=> {
     
     
     return (
+        
     <div className="homePage">
+    <h4 className="homeSeparator">Recommended Resources for Higher Education Development</h4>
     
-     <h4 >Best Resources for Higher Education Leaders</h4>
         
         <section className="homeSearchItems">
             <div className="searchItem">
@@ -38,7 +39,8 @@ export const Home = ()=> {
         </section>
 
         <section className="homeEvents">
-        <div className="homeEventSectionTitle">2023 Conferences and Events</div>
+        <div className="homeEventSectionTitle">2023 Conferences and Events </div>
+            <p className="homeEventSectionTitle">For Higher Ed Leaders</p>
             <div className="eventCard">
             {
                 leadershipEvents.map((event) => (

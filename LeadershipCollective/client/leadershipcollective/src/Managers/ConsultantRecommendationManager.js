@@ -43,3 +43,8 @@ export const updateConsultantRecommendation = (consultantRecommendation) => {
     return fetch(`${apiUrl}/api/ConsultantRecommendation/search/${id}`)//http GET single consultantRecommendation
     .then((res)=> res.json())
   };
+
+  export const searchConsultantRecommendationsByServiceArea = (query) => {
+    return fetch(`${apiUrl}/api/ConsultantRecommendation/searchByServiceArea?criterion=${query}`)//http GET single consultantRecommendation
+    .then((res)=> res.json())
+  };

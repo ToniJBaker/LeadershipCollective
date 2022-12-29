@@ -37,6 +37,8 @@ namespace LeadershipCollective
             services.AddTransient<ILeadershipEventRepository, LeadershipEventRepository>();
             services.AddTransient<IUserTypeRepository, UserTypeRepository>();
             services.AddTransient<IMediaRecommendationRepository, MediaRecommendationRepository>();
+            services.AddTransient<IMediaMessageRepository, MediaMessageRepository>();
+
 
 
 

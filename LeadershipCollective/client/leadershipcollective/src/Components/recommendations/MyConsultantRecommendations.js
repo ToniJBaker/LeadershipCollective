@@ -29,14 +29,15 @@ useEffect(()=>{
 return(<>
     
     <Card >
+    <h3>My Recommendations for Consultants/Facilitators</h3>
     <div className="addingMyRecommendations">Create Recommendations<br/>
     <Link to="/addConsultantRecommendation" className="addRecommendationLink" >Add New Consultant Recommendation</Link><br/>
-    <Link className="addRecommendationLink">Add New Media Recommendation</Link>
+    <Link to="/addMediaRecommendation" className="addRecommendationLink">Add New Media Recommendation</Link>
     </div>
     </Card>
 
 <section className="allRecommendations">
-
+        
        { myConsultantRecommendations.map((rec) => (
            rec.userProfileId === localUser.id
             ?<Card key={rec.id} style={{width: '18rem'}} >

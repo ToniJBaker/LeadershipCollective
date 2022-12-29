@@ -18,6 +18,7 @@ import { MediaRecommendationsList } from "../mediaRecommendations/MediaRecommend
 import { MediaRecommendationDetails } from "../mediaRecommendations/MediaRecommendationDetails";
 import { MyMediaRecommendationEdit } from "../mediaRecommendations/MyMediaRecommendationEdit";
 import { MyMediaRecommendationDetails } from "../mediaRecommendations/MyMediaRecommendationDetails";
+import { MediaRecommendationAdd } from "../mediaRecommendations/MediaRecommendationAdd";
 
 
 
@@ -48,6 +49,7 @@ return(
     <Route path="/myMediaRecommendations" element={<MyMediaRecommendations />} />
     <Route path="/myMediaRecommendations/:id" element={<MyMediaRecommendationDetails />} />
     <Route path="/myMediaRecommendations/:id/edit" element={<MyMediaRecommendationEdit />} />
+    <Route path="/addMediaRecommendation" element={<MediaRecommendationAdd />} />
 
 
    

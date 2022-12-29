@@ -97,20 +97,25 @@ namespace LeadershipCollective.Repositories
                 {
                     cmd.CommandText = @"
                           SELECT
-                            mr.id AS MediaRecId, mr.Title, mr.Content, mr.Author, mr.PublicationDate, mr.LinkAddress, mr.SubjectId, mr.DateCreated, mr.ResourceTypeId, mr.UserProfileId, 
+                            mr.id AS MediaRecId, mr.Title, mr.Content AS RecommendationContent, mr.Author, mr.PublicationDate, mr.LinkAddress, mr.SubjectId, mr.DateCreated AS RecommendationCreated, mr.ResourceTypeId, mr.UserProfileId, 
 
                             s.Id AS SubjectId, s.Name AS SubjectName, 
 
                             r.Id AS ResourceTypeId, r.Name AS ResourceTypeName,
 
-                            u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId, u.DisplayName,
-                            ut.Id AS UserTypeId, ut.Name AS UserTypeName
+                            u.Id AS UserProfileId, u.FirstName, u.LastName, u.Email AS UserEmail, u.UserTypeId, u.DisplayName AS UserDisplayName,
+                            ut.Id AS UserTypeId, ut.Name AS UserTypeName,
+
+                            mm.Id AS MediaRecMessageId, mm.Content AS MessageContent , mm.UserProfileId AS MessageUserProfileId , mm.MediaRecommendationId AS MediaRecommendationId, mm.DateCreated AS MediaMessageCreated,
+                            up.Id AS MessageUserProfileId, up.FirstName AS MessageFirstName, up.LastName AS MessageLastName, up.DisplayName AS MessageDisplayName
                             
                           FROM MediaRecommendation mr
                           LEFT JOIN Subject s ON mr.SubjectId = s.Id
                           LEFT JOIN ResourceType r ON mr.ResourceTypeId = r.Id
                           LEFT JOIN UserProfile u ON mr.UserProfileId = u.Id
                           LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
+                          LEFT JOIN MediaRecMessage mm ON mr.id = mm.MediaRecommendationId
+                          LEFT JOIN UserProfile up ON mm.UserProfileId = up.id
                           WHERE mr.Id = @Id
                           ORDER BY mr.DateCreated DESC ";
 
@@ -127,11 +132,11 @@ namespace LeadershipCollective.Repositories
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("MediaRecId")),
                                 Title = DbUtils.GetString(reader, "Title"),
-                                Content = DbUtils.GetString(reader, "Content"),
+                                Content = DbUtils.GetString(reader, "RecommendationContent"),
                                 Author = DbUtils.GetString(reader, "Author"),
                                 PublicationDate = DbUtils.GetDateTime(reader, "PublicationDate"),
                                 LinkAddress = DbUtils.GetString(reader, "LinkAddress"),
-                                DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                                DateCreated = DbUtils.GetDateTime(reader, "RecommendationCreated"),
                                 SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
                                 ResourceTypeId = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
                                 UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
@@ -150,7 +155,7 @@ namespace LeadershipCollective.Repositories
                                     Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
                                     FirstName = DbUtils.GetString(reader, "FirstName"),
                                     LastName = DbUtils.GetString(reader, "LastName"),
-                                    DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                                    DisplayName = DbUtils.GetString(reader, "UserDisplayName"),
                                     Email = DbUtils.GetString(reader, "UserEmail"),
                                     UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
                                     UserType = new UserType()
@@ -158,11 +163,31 @@ namespace LeadershipCollective.Repositories
                                         Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
                                         Name = DbUtils.GetString(reader, "UserTypeName"),
                                     }
-                                }
-                               
+                                },
+                                Messages = new List<MediaRecMessage>(),
+
                             };
                         }
-                        
+
+                        if (DbUtils.IsNotDbNull(reader, "MediaRecMessageId"))
+                        {
+                            singleRecommendation.Messages.Add(new MediaRecMessage()
+                            {
+                                Id = DbUtils.GetInt(reader, "MediaRecMessageId"),
+                                Content = DbUtils.GetString(reader, "MessageContent"),
+                                MediaRecommendationId = id,
+                                DateCreated = reader.GetDateTime(reader.GetOrdinal("MediaMessageCreated")),
+                                UserProfileId = DbUtils.GetInt(reader, "MessageUserProfileId"),
+                                UserProfile = new UserProfile()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MessageUserProfileId"),
+                                    FirstName = DbUtils.GetString(reader, "MessageFirstName"),
+                                    LastName = DbUtils.GetString(reader, "MessageLastName"),
+                                    DisplayName = DbUtils.GetString(reader, "MessageDisplayName")
+                                }
+                            });
+                        }
+
                     }
 
                     reader.Close();

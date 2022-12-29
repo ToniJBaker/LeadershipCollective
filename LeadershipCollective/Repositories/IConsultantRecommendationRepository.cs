@@ -9,6 +9,7 @@ namespace LeadershipCollective.Repositories
         List<ConsultantRecommendation> GetAll();
         ConsultantRecommendation GetById(int id);
         List<ConsultantRecommendation> SearchBySubjectId(int id);
+        List<ConsultantRecommendation> SearchByServiceArea(string criterion);
 
         void Add(ConsultantRecommendation consultantRecommendation);
 
