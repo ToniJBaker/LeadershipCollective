@@ -70,5 +70,12 @@ namespace LeadershipCollective.Controllers
         {
             return Ok(_consultantRecommendationRepository.SearchBySubjectId(id));
         }
+
+        // GET api/<ConsultantRecommendationController>/5
+        [HttpGet("searchByServiceArea")]
+        public IActionResult Search(string criterion)
+        {
+            return Ok(_consultantRecommendationRepository.SearchByServiceArea(criterion));
+        }
     }
 }
