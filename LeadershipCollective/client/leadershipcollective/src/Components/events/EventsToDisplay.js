@@ -16,10 +16,10 @@ return (<section  >
       </CardText>
       <CardText>
         <small className="text-muted">
-          {event.dateString}
+          Date: {event.dateString}
         </small><br/>
         <small className="text-muted">
-          {event.location}
+          Location: {event.location}
         </small><hr/>
         <CardLink href={event.linkAddress}>Register for Event</CardLink>
       </CardText>
