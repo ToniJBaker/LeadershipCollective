@@ -47,14 +47,14 @@ export const MediaRecommendationsList = ()=> {
     </Input>
     <section className="allRecommendations">
         {allMediaRecommendations.map((rec) => (
-            <Card key={rec.id} style={{width: '20rem'}} >
+            <Card key={rec.id} style={{width: '18rem'}} >
                 <CardBody>
                 <CardTitle tag="h5">
                         {rec.resourceType.name}
                     </CardTitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">Title: {rec.title} </CardSubtitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">Author: {rec.author} </CardSubtitle>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">Publication Date: {rec.publicationDateString} </CardSubtitle>
+                    <CardSubtitle className="mb-2 text-muted" tag="h6">Published: {rec.publicationDateString} </CardSubtitle>
                     <hr/>
                     <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.subject.name} </CardSubtitle>
                     
@@ -64,7 +64,7 @@ export const MediaRecommendationsList = ()=> {
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
                     <CardText> On: {rec.dateCreatedString}</CardText>
                     <CardLink href={`/mediaRecommendation/${rec.id}`} >View Details</CardLink>
-                    <CardLink href={rec.linkAddress}>{rec.title}</CardLink>
+                    <CardLink href={rec.linkAddress}>Link to {rec.resourceType.name}</CardLink>
                 </CardBody>
             </Card>))}
         </section>

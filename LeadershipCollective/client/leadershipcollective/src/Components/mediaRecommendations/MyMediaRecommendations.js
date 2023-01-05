@@ -54,7 +54,7 @@ export const MyMediaRecommendations =()=> {
                     <CardText> Recommended by: {rec.userProfile.fullName}</CardText>
                     <CardText> On: {rec.dateCreatedString}</CardText>
                     <CardLink href={`/myMediaRecommendations/${rec.id}`}>View Details</CardLink>
-                    <CardLink href={rec.linkAddress}>{rec.title}</CardLink><br/>
+                    <CardLink href={rec.linkAddress}>Link to {rec.resourceType.name}</CardLink><br/>
                     
                     
                     
