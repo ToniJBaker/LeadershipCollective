@@ -38,7 +38,7 @@ namespace LeadershipCollective.Models
         {
             get
             {
-                return $"{FirstName} {LastName}";
+                return $"{LastName}, {FirstName} ";
             }
         }
     }

@@ -78,7 +78,7 @@ export const MyMediaRecommendationDetails =()=> {
                     : <></>}
         <CardLink className="text-muted" href={`/myMediaRecommendations/${mediaRecommendation.id}/edit`} >Edit</CardLink>
         <hr/>
-        <CardLink href={mediaRecommendation.linkAddress}  className="text-muted" >{mediaRecommendation.title} Web Page</CardLink><br/>
+        <CardLink href={mediaRecommendation.linkAddress}  className="text-muted" >{mediaRecommendation.title}</CardLink><br/>
         <small className="text-muted">Recommended by {mediaRecommendation.userProfile?.fullName} </small>
       </CardText>
     </CardBody>
