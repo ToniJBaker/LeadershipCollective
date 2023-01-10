@@ -51,7 +51,7 @@ export const ConsultantRecommendationsList = () =>{
     <h3>Consultant/Facilitator Recommendations</h3>
 
         <Input type="select" name="tags" defaultValue="none" onChange={handleSelect}  >
-                <option value="none" disabled hidden>Click to Search By Subject</option>
+                <option value="none" disabled hidden>Click to Search By Specialty</option>
                             <option value="true"   > Get All </option>
                             {subjects.map((s) => (
                                 <option key={s.id} value={s.id}>{s.name}</option>
@@ -134,7 +134,7 @@ export const ConsultantRecommendationsList = () =>{
                     <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.email} </CardSubtitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.phoneNumber} </CardSubtitle>
                     <hr/>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6"> {rec.subject.name} </CardSubtitle>
+                    <CardSubtitle className="mb-2 text-muted" tag="h6">Specialty: {rec.subject.name} </CardSubtitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">Service Area: {rec.serviceArea} </CardSubtitle>
                 </CardBody>
                     <img alt="Card cap" src="https://picsum.photos/318/180" width="100%"/>

@@ -88,5 +88,17 @@ namespace LeadershipCollective.Controllers
             _userProfileRepository.UpdateUserType(id, userProfile);
             return Ok(userProfile);
         }
+
+        [HttpPut("{id}/updateUserProfile")]
+        public IActionResult PutUpdateUserProfile(int id, UserProfile userProfile)
+        {
+
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            _userProfileRepository.UpdateUserProfile(id, userProfile);
+            return Ok(userProfile);
+        }
     }
 }

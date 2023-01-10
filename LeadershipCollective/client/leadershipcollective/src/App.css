@@ -55,8 +55,11 @@ nav{
     margin-left: 5em;
     margin-right: 5em;
 }
+.profileLink {
+    color:rgb(138, 70, 40);
+}
 .homeLink {
-    color:white
+    color:white;
 }
 .homeEventSectionTitle{
     color:rgb(242, 97, 39);
@@ -124,7 +127,7 @@ nav{
     margin-right:2em;  
 }
 .aboutParagraph{
-    color:rgb(58, 42, 11);
+    color:black;
     background: linear-gradient(to left,rgb(138, 70, 40),rgb(195, 210, 210));
     font-size: 18px;
     padding:2em;

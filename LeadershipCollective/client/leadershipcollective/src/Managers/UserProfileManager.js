@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5001";
+const apiUrl = "https://localhost:44309";
 
   export const login = (userObject) => {
     return fetch(`${apiUrl}/api/userprofile/getbyemail?email=${userObject.email}`)
@@ -51,6 +51,16 @@ const apiUrl = "https://localhost:5001";
 
   export const updateUserProfileType = (user) => {
     return fetch(`${apiUrl}/api/userProfile/${user.id}/updateUserType`, {
+     method: "PUT",
+     headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user) 
+    })
+  };
+
+  export const updateUserProfile = (user) => {
+    return fetch(`${apiUrl}/api/userProfile/${user.id}/updateUserProfile`, {
      method: "PUT",
      headers: {
       "Content-Type": "application/json",

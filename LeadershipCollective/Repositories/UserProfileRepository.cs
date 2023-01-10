@@ -199,5 +199,33 @@ namespace LeadershipCollective.Repositories
             }
         }
 
+        public void UpdateUserProfile(int id, UserProfile userProfile)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE UserProfile
+                                    SET
+                                          FirstName = @firstName,
+                                          LastName = @lastName,
+                                          DisplayName = @displayName,
+                                          Email = @email
+                                    WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@firstName", userProfile.FirstName);
+                    cmd.Parameters.AddWithValue("@lastName", userProfile.LastName);
+                    cmd.Parameters.AddWithValue("@displayName", userProfile.DisplayName);
+                    cmd.Parameters.AddWithValue("@email", userProfile.Email);
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

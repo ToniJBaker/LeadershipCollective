@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5001";
+const apiUrl = "https://localhost:44309";
 
 export const getAllSubjects = () => {
     return fetch(`${apiUrl}/api/Subject`)//http GET list of all Subjects 

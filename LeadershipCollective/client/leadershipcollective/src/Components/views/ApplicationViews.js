@@ -19,6 +19,7 @@ import { MediaRecommendationDetails } from "../mediaRecommendations/MediaRecomme
 import { MyMediaRecommendationEdit } from "../mediaRecommendations/MyMediaRecommendationEdit";
 import { MyMediaRecommendationDetails } from "../mediaRecommendations/MyMediaRecommendationDetails";
 import { MediaRecommendationAdd } from "../mediaRecommendations/MediaRecommendationAdd";
+import { UserProfileEdit } from "../users/UserProfileEdit";
 
 
 
@@ -37,6 +38,8 @@ return(
 
     <Route path="/users" element={<UserList />} />
     <Route path="/users/:id/editUserType" element={<UserProfileTypeEdit />} />
+    <Route path="/editProfile" element={<UserProfileEdit />} />
+
 
     <Route path="/events" element={<EventList />} />
     <Route path="/events/add" element={<EventAdd />} />

@@ -8,13 +8,22 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,CardLink
+  NavLink,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu
+  
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const Header = ({isLoggedIn, setIsLoggedIn}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const [time, setTime] = useState(null)
+    
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const nameToggle = () => setDropdownOpen((prevState) => !prevState);
     
     
     let localUser
@@ -105,10 +114,16 @@ return(
       <>
       <Nav>
           <div className="homeLink">
-            Welcome {localUser.fullName}
+            <Dropdown isOpen={dropdownOpen} toggle={nameToggle} >
+              <DropdownToggle caret>Welcome {localUser.fullName}</DropdownToggle>
+              <DropdownMenu >
+                <Link to="/editProfile" className="profileLink" >Edit Profile</Link>
+              </DropdownMenu>
+            </Dropdown>
           </div>
+          
           <div style={{marginLeft:'50px'}}>
-          {new Date().toUTCString().slice(0,16)}
+            {new Date().toUTCString().slice(0,16)}
           </div>
       </Nav>
       </>
