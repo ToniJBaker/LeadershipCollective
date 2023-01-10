@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5001";
+const apiUrl = "https://localhost:44309";
 
 export const getAllEvents = () => {
     return fetch(`${apiUrl}/api/LeadershipEvent`)//http GET request all events
