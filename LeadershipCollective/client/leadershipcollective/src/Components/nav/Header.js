@@ -8,11 +8,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,CardLink,
+  NavLink,
   Dropdown,
   DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  DropdownMenu
+  
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -117,7 +117,7 @@ return(
             <Dropdown isOpen={dropdownOpen} toggle={nameToggle} >
               <DropdownToggle caret>Welcome {localUser.fullName}</DropdownToggle>
               <DropdownMenu >
-                <Link to="/editProfile" header>Edit Profile</Link>
+                <Link to="/editProfile" className="profileLink" >Edit Profile</Link>
               </DropdownMenu>
             </Dropdown>
           </div>

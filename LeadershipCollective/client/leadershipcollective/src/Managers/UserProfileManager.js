@@ -58,3 +58,13 @@ const apiUrl = "https://localhost:44309";
       body: JSON.stringify(user) 
     })
   };
+
+  export const updateUserProfile = (user) => {
+    return fetch(`${apiUrl}/api/userProfile/${user.id}/updateUserProfile`, {
+     method: "PUT",
+     headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user) 
+    })
+  };

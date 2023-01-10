@@ -55,8 +55,11 @@ nav{
     margin-left: 5em;
     margin-right: 5em;
 }
+.profileLink {
+    color:rgb(138, 70, 40);
+}
 .homeLink {
-    color:white
+    color:white;
 }
 .homeEventSectionTitle{
     color:rgb(242, 97, 39);
