@@ -42,7 +42,7 @@ export const UserProfileEdit = ()=> {
     }
     
     return (<>
-    <h1>edit my profile</h1>
+    
     <section className="mx-5 mb-5 mt-3 " >
             <h3>Edit My Profile</h3>
             <div className="border mt-3 p-3">
