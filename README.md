@@ -14,7 +14,10 @@ Reactstrap<br>
 Handling user events<br>
 Data entry/editing<br>
 
-Enter the project directory , you can run:
+Enter the project directory , run to start API:
+### `start LeadershipCollective.sln`
+
+from LeadershipCollective/client/leadershipCollective
 ### `npm start`
 
 Runs the app in the development mode.\
