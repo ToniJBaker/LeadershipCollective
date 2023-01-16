@@ -14,5 +14,10 @@ Reactstrap<br>
 Handling user events<br>
 Data entry/editing<br>
 
+Enter the project directory , you can run:
+### `npm start`
+
+Runs the app in the development mode.\
+Open [https://localhost:44309](https://localhost:44309) to view it in your browser.
 
 
