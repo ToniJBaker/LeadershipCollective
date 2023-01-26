@@ -22,16 +22,16 @@ https://www.figma.com/file/QLZ8BVxofKIXSY8qhVgHAx/Leadership-Collective?node-id=
 https://dbdiagram.io/d/637adce4c9abfc61117405b0
 ![Screenshot (53)](https://user-images.githubusercontent.com/106984214/212774011-93a5d6d8-c6a5-4de3-8db0-5a380be3d90b.png)
 
-
+# Backend
 Enter the project directory , run to start API:<br>
 1.To open Visual Studio from Solution File:<br>
-###`start LeadershipCollective.sln`
+  `start LeadershipCollective.sln`<br>
 2.Populate the database with the file in the SQL folder of this project.<br>
   SQLQuery1-CreateTables.sql<br>
   SQLQuery-Seed Data.sql<br>
 
-
-From LeadershipCollective/client/leadershipCollective
+# Frontend
+From LeadershipCollective/client/leadershipCollective in terminal
 ### `npm install`
 ### `npm start`
 Runs the app in the development mode.\
