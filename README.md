@@ -24,10 +24,13 @@ https://dbdiagram.io/d/637adce4c9abfc61117405b0
 
 
 Enter the project directory , run to start API:
-### `start LeadershipCollective.sln`
+1.To open Visual Studio from Solution File:
+2.### `start LeadershipCollective.sln`
+3.Populate the database with the file in the SQL folder of this project.
 
 
 From LeadershipCollective/client/leadershipCollective
+### `npm install`
 ### `npm start`
 Runs the app in the development mode.\
 Open [https://localhost:44309](https://localhost:44309) to view it in your browser.
