@@ -27,6 +27,8 @@ Enter the project directory , run to start API:<br>
 1.To open Visual Studio from Solution File:<br>
 2.### `start LeadershipCollective.sln`<br>
 3.Populate the database with the file in the SQL folder of this project.<br>
+  SQLQuery1-CreateTables.sql<br>
+  SQLQuery1-CreateTables.sql<br>
 
 
 From LeadershipCollective/client/leadershipCollective
