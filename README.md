@@ -24,9 +24,9 @@ https://dbdiagram.io/d/637adce4c9abfc61117405b0
 
 
 Enter the project directory , run to start API:
-1.To open Visual Studio from Solution File:
-2.### `start LeadershipCollective.sln`
-3.Populate the database with the file in the SQL folder of this project.
+1.To open Visual Studio from Solution File:<br>
+2.### `start LeadershipCollective.sln`<br>
+3.Populate the database with the file in the SQL folder of this project.<br>
 
 
 From LeadershipCollective/client/leadershipCollective
