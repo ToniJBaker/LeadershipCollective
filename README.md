@@ -35,7 +35,7 @@ From LeadershipCollective/client/leadershipCollective in terminal
 ### `npm install`
 ### `npm start`
 Runs the app in the development mode.\
-Open [https://localhost:44309](https://localhost:44309) to view it in your browser.
+Open [https://localhost:44309](https://localhost:44309) to view it in your browser.<br>
 Log in to app with foxman@mail.com and use any password.
 
 
