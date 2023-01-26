@@ -23,7 +23,7 @@ https://dbdiagram.io/d/637adce4c9abfc61117405b0
 ![Screenshot (53)](https://user-images.githubusercontent.com/106984214/212774011-93a5d6d8-c6a5-4de3-8db0-5a380be3d90b.png)
 
 
-Enter the project directory , run to start API:
+Enter the project directory , run to start API:<br>
 1.To open Visual Studio from Solution File:<br>
 2.### `start LeadershipCollective.sln`<br>
 3.Populate the database with the file in the SQL folder of this project.<br>
